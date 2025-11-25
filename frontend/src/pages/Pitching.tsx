@@ -58,7 +58,7 @@ const Pitching: React.FC = () => {
         </motion.div>
 
         <Quiz
-          quizId="pitching-question"
+          quizId="pitching"
           question="Which stat better predicts future pitching performance?"
           options={[
             'ERA (Earned Run Average)',

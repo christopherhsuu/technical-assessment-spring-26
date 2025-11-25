@@ -48,7 +48,7 @@ const Defense: React.FC = () => {
         </motion.div>
 
         <Quiz
-          quizId="defense-question"
+          quizId="defense"
           question="What's the biggest problem with using errors to evaluate defense?"
           options={[
             'Too many errors',

@@ -116,7 +116,7 @@ const Offense: React.FC = () => {
         </motion.div>
 
         <Quiz
-          quizId="offense-question"
+          quizId="offense"
           question="Player A: .280 AVG, .320 wOBA | Player B: .250 AVG, .380 wOBA. Who's the better hitter?"
           options={[
             'Player A (higher batting average)',

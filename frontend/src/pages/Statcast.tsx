@@ -60,7 +60,7 @@ const Statcast: React.FC = () => {
         </motion.div>
 
         <Quiz
-          quizId="statcast-question"
+          quizId="statcast"
           question="What makes a 'barrel' in Statcast?"
           options={[
             'Any hard-hit ball',

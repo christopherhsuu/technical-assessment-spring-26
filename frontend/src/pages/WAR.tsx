@@ -259,7 +259,7 @@ const WAR: React.FC = () => {
 
         {/* Quiz */}
         <Quiz
-          quizId="war-question"
+          quizId="war"
           question="A player with 5.0 WAR is considered:"
           options={[
             'Below Average',
