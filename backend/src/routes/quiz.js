@@ -7,12 +7,13 @@ import Quiz from '../models/Quiz.js';
 const router = express.Router();
 
 /**
- * GET /api/quizzes/:quizId
- * Fetch a specific quiz by its ID, including all vote data
+ * GET /api/quizzes/:pageRoute
+ * Fetch a specific quiz by its page route, including all vote data
  */
-router.get('/:quizId', async (req, res) => {
+router.get('/:pageRoute', async (req, res) => {
   try {
-    const quiz = await Quiz.findOne({ quizId: req.params.quizId });
+    const pageRoute = '/' + req.params.pageRoute;
+    const quiz = await Quiz.findOne({ pageRoute });
 
     if (!quiz) {
       return res.status(404).json({ message: 'Quiz not found' });
@@ -26,11 +27,11 @@ router.get('/:quizId', async (req, res) => {
 });
 
 /**
- * POST /api/quizzes/:quizId/vote
+ * POST /api/quizzes/:pageRoute/vote
  * Submit a new vote for a quiz
  * Body: { option: number, username: string }
  */
-router.post('/:quizId/vote', async (req, res) => {
+router.post('/:pageRoute/vote', async (req, res) => {
   try {
     const { option, username } = req.body;
 
@@ -39,7 +40,8 @@ router.post('/:quizId/vote', async (req, res) => {
       return res.status(400).json({ message: 'Option and username are required' });
     }
 
-    const quiz = await Quiz.findOne({ quizId: req.params.quizId });
+    const pageRoute = '/' + req.params.pageRoute;
+    const quiz = await Quiz.findOne({ pageRoute });
 
     if (!quiz) {
       return res.status(404).json({ message: 'Quiz not found' });
@@ -67,11 +69,11 @@ router.post('/:quizId/vote', async (req, res) => {
 });
 
 /**
- * PUT /api/quizzes/:quizId/vote
+ * PUT /api/quizzes/:pageRoute/vote
  * Change an existing vote
  * Body: { newOption: number, username: string }
  */
-router.put('/:quizId/vote', async (req, res) => {
+router.put('/:pageRoute/vote', async (req, res) => {
   try {
     const { newOption, username } = req.body;
 
@@ -80,7 +82,8 @@ router.put('/:quizId/vote', async (req, res) => {
       return res.status(400).json({ message: 'New option and username are required' });
     }
 
-    const quiz = await Quiz.findOne({ quizId: req.params.quizId });
+    const pageRoute = '/' + req.params.pageRoute;
+    const quiz = await Quiz.findOne({ pageRoute });
 
     if (!quiz) {
       return res.status(404).json({ message: 'Quiz not found' });
