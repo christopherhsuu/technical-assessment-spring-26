@@ -90,21 +90,26 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Start server
-httpServer.listen(PORT, () => {
-  console.log(`
+// Start server (only if not in Vercel serverless environment)
+if (process.env.VERCEL !== '1') {
+  httpServer.listen(PORT, () => {
+    console.log(`
 🚀 Server running on port ${PORT}
 📡 Socket.io enabled for real-time updates
 🗄️  MongoDB connection established
 🌐 CORS enabled for ${process.env.FRONTEND_URL || 'http://localhost:5173'}
-  `);
-});
-
-// Handle graceful shutdown
-process.on('SIGTERM', () => {
-  console.log('SIGTERM received, shutting down gracefully...');
-  httpServer.close(() => {
-    console.log('Server closed');
-    process.exit(0);
+    `);
   });
-});
+
+  // Handle graceful shutdown
+  process.on('SIGTERM', () => {
+    console.log('SIGTERM received, shutting down gracefully...');
+    httpServer.close(() => {
+      console.log('Server closed');
+      process.exit(0);
+    });
+  });
+}
+
+// Export for Vercel serverless
+export default app;
