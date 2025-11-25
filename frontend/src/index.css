@@ -1,0 +1,18 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap');
+
+@theme {
+  --color-baseball-green: #1a472a;
+  --color-dirt-brown: #8b4513;
+  --color-baseball-red: #dc143c;
+  --color-off-white: #fafaf9;
+
+  --font-family-sans: 'Inter', system-ui, sans-serif;
+  --font-family-display: 'Poppins', 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--color-off-white);
+  color: rgb(17 24 39);
+  font-family: var(--font-family-sans);
+}
