@@ -2,7 +2,7 @@
 // Reusable card component for displaying stat information with hover effect
 
 import { motion } from 'framer-motion';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 interface StatCardProps {
   title: string;

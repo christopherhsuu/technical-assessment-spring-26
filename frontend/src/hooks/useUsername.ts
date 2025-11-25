@@ -1,7 +1,7 @@
 // Custom hook for managing username with localStorage
 // Persists username across page refreshes
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const USERNAME_KEY = 'sabermetrics-username';
 
