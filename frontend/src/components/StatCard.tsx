@@ -20,16 +20,38 @@ const StatCard: React.FC<StatCardProps> = ({
   color = 'green'
 }) => {
   const colorClasses = {
-    green: 'bg-green-50 border-green-200 text-green-700',
-    red: 'bg-red-50 border-red-200 text-red-700',
-    blue: 'bg-blue-50 border-blue-200 text-blue-700',
-    gray: 'bg-gray-50 border-gray-200 text-gray-700',
+    green: {
+      bg: 'bg-[#f0fff4]',
+      border: 'border-[#00d9ff]',
+      text: 'text-[#00d9ff]',
+      accent: 'bg-[#00d9ff]'
+    },
+    red: {
+      bg: 'bg-[#fff5f0]',
+      border: 'border-[#ff6b35]',
+      text: 'text-[#ff6b35]',
+      accent: 'bg-[#ff6b35]'
+    },
+    blue: {
+      bg: 'bg-[#f0f5ff]',
+      border: 'border-[#2d4a7c]',
+      text: 'text-[#2d4a7c]',
+      accent: 'bg-[#2d4a7c]'
+    },
+    gray: {
+      bg: 'bg-[#fef5e7]',
+      border: 'border-[#cbd5e0]',
+      text: 'text-[#4a5568]',
+      accent: 'bg-[#cbd5e0]'
+    },
   };
+
+  const colors = colorClasses[color];
 
   return (
     <motion.div
       whileHover={{ scale: 1.02, y: -4 }}
-      className={`p-6 rounded-lg border-2 ${colorClasses[color]} transition-shadow hover:shadow-lg`}
+      className={`p-6 border-2 ${colors.bg} ${colors.border} transition-all hover:shadow-[4px_4px_0px_rgba(0,0,0,0.1)]`}
     >
       {icon && (
         <div className="mb-3 text-3xl">
@@ -37,19 +59,22 @@ const StatCard: React.FC<StatCardProps> = ({
         </div>
       )}
 
-      <h4 className="text-sm font-semibold uppercase tracking-wide opacity-75 mb-1">
+      <h4 className={`font-mono text-xs font-bold uppercase tracking-widest mb-2 ${colors.text}`}>
         {title}
       </h4>
 
-      <div className="text-3xl font-display font-bold mb-2">
+      <div className={`scoreboard-num text-4xl mb-2 ${colors.text}`}>
         {value}
       </div>
 
       {description && (
-        <p className="text-sm opacity-75">
+        <p className="text-sm text-gray-600 font-serif">
           {description}
         </p>
       )}
+
+      {/* Small accent bar at bottom */}
+      <div className={`mt-4 h-1 w-12 ${colors.accent}`}></div>
     </motion.div>
   );
 };

@@ -2,17 +2,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&family=Merriweather:wght@300;400;700;900&display=swap');
 
 @theme {
-  /* Baseball-inspired color palette */
-  --color-field-green: #1a4d2e;
-  --color-field-dark: #0f2818;
-  --color-clay-red: #a14a3a;
-  --color-clay-bright: #c85a47;
+  /* Data-driven color palette - inspired by charts and analytics */
+  --color-navy-deep: #0a1628;
+  --color-navy-mid: #1a2a47;
+  --color-slate-blue: #2d4a7c;
+  --color-data-orange: #ff6b35;
+  --color-data-orange-bright: #ff8c61;
   --color-cream: #f5f1e8;
   --color-chalk-white: #fdfbf7;
-  --color-neon-yellow: #f4e409;
-  --color-neon-pink: #ff2e97;
-  --color-scoreboard-black: #0a0e0d;
-  --color-stadium-gray: #3a3f3e;
+  --color-chart-yellow: #ffd23f;
+  --color-accent-cyan: #00d9ff;
+  --color-text-dark: #0f1419;
+  --color-text-gray: #4a5568;
 
   --font-family-display: 'Zilla Slab', serif;
   --font-family-mono: 'JetBrains Mono', monospace;

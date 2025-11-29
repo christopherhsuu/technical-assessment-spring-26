@@ -22,23 +22,23 @@ const Navigation: React.FC = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="bg-[#0a0e0d] border-b-4 border-[#f4e409] sticky top-0 z-30 shadow-lg">
+    <nav className="bg-[#0a1628] border-b-4 border-[#ffd23f] sticky top-0 z-30 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          {/* Logo - Scoreboard Style */}
+          {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
             <div className="relative">
-              <div className="w-12 h-12 bg-[#a14a3a] border-2 border-[#f4e409] flex items-center justify-center group-hover:scale-110 transition-transform">
-                <span className="font-mono font-black text-2xl text-[#f4e409]">⚾</span>
+              <div className="w-12 h-12 bg-[#ff6b35] border-2 border-[#ffd23f] flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span className="font-mono font-black text-2xl text-[#ffd23f]">📊</span>
               </div>
-              <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-[#f4e409]"></div>
+              <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-[#ffd23f]"></div>
             </div>
             <div>
               <span className="font-display font-black text-2xl text-[#f5f1e8] tracking-tight block leading-none">
-                DiamondIQ
+                STATHEAD
               </span>
-              <span className="font-mono text-[10px] text-[#a14a3a] tracking-widest">
-                ANALYTICS LAB
+              <span className="font-mono text-[10px] text-[#ff6b35] tracking-widest">
+                SABERMETRICS
               </span>
             </div>
           </Link>
@@ -51,8 +51,8 @@ const Navigation: React.FC = () => {
                 to={link.path}
                 className={`px-5 py-2.5 font-mono font-bold text-sm tracking-wide transition-all border-2 ${
                   isActive(link.path)
-                    ? 'bg-[#f4e409] text-[#0a0e0d] border-[#f4e409] shadow-[4px_4px_0px_rgba(161,74,58,0.5)]'
-                    : 'bg-transparent text-[#e8e2d5] border-[#3a3f3e] hover:border-[#a14a3a] hover:text-[#f4e409]'
+                    ? 'bg-[#ffd23f] text-[#0a1628] border-[#ffd23f] shadow-[4px_4px_0px_rgba(255,107,53,0.5)]'
+                    : 'bg-transparent text-[#cbd5e0] border-[#1a2a47] hover:border-[#ff6b35] hover:text-[#ffd23f]'
                 }`}
               >
                 {link.label.toUpperCase()}
@@ -62,12 +62,12 @@ const Navigation: React.FC = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-3 border-2 border-[#f4e409] bg-[#0a0e0d] hover:bg-[#f4e409] hover:text-[#0a0e0d] transition-colors"
+            className="md:hidden p-3 border-2 border-[#ffd23f] bg-[#0a1628] hover:bg-[#ffd23f] hover:text-[#0a1628] transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle mobile menu"
           >
             <svg
-              className="w-6 h-6 text-[#f4e409]"
+              className="w-6 h-6 text-[#ffd23f]"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -97,7 +97,7 @@ const Navigation: React.FC = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden pb-4 border-t-2 border-[#3a3f3e] mt-2 pt-4"
+            className="md:hidden pb-4 border-t-2 border-[#1a2a47] mt-2 pt-4"
           >
             {navLinks.map((link) => (
               <Link
@@ -105,8 +105,8 @@ const Navigation: React.FC = () => {
                 to={link.path}
                 className={`block px-4 py-3 font-mono font-bold text-sm tracking-wide transition-all mb-2 border-l-4 ${
                   isActive(link.path)
-                    ? 'bg-[#f4e409] text-[#0a0e0d] border-[#a14a3a]'
-                    : 'bg-[#1a1e1d] text-[#e8e2d5] border-[#3a3f3e] hover:border-[#f4e409] hover:text-[#f4e409]'
+                    ? 'bg-[#ffd23f] text-[#0a1628] border-[#ff6b35]'
+                    : 'bg-[#1a2a47] text-[#cbd5e0] border-[#2d4a7c] hover:border-[#ffd23f] hover:text-[#ffd23f]'
                 }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
