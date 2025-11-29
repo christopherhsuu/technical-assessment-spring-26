@@ -51,43 +51,66 @@ const Home: React.FC = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section - Data Visualization Theme */}
+      {/* Hero Section - Enhanced Visual Design */}
       <section className="relative bg-[#0a1628] text-[#f5f1e8] py-32 px-4 overflow-hidden">
-        {/* Animated chart grid lines - subtle data viz aesthetic */}
-        <div className="absolute inset-0 opacity-[0.03]">
-          {/* Horizontal lines */}
-          {[...Array(8)].map((_, i) => (
-            <div key={`h-${i}`} className="absolute left-0 right-0 h-px bg-[#00d9ff]" style={{ top: `${i * 12.5}%` }}></div>
-          ))}
-          {/* Vertical lines */}
-          {[...Array(12)].map((_, i) => (
-            <div key={`v-${i}`} className="absolute top-0 bottom-0 w-px bg-[#00d9ff]" style={{ left: `${i * 8.33}%` }}></div>
+        {/* Animated baseball diamond pattern */}
+        <div className="absolute inset-0 opacity-[0.08]">
+          {[...Array(5)].map((_, i) => (
+            <motion.div
+              key={`diamond-${i}`}
+              initial={{ rotate: 45, scale: 0.8, opacity: 0 }}
+              animate={{ rotate: 45, scale: 1, opacity: 1 }}
+              transition={{ delay: i * 0.2, duration: 1 }}
+              className="absolute w-32 h-32 border-2 border-[#ffd23f]"
+              style={{
+                top: `${15 + i * 20}%`,
+                left: `${5 + i * 15}%`,
+              }}
+            ></motion.div>
           ))}
         </div>
 
-        {/* Data points - representing key stats */}
+        {/* Floating stat symbols */}
         <div className="absolute inset-0">
-          {/* WAR stat point */}
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 0.6 }}
-            transition={{ delay: 0.8, duration: 0.5 }}
-            className="absolute top-[20%] left-[15%] w-3 h-3 bg-[#ffd23f] rounded-full shadow-[0_0_20px_rgba(255,210,63,0.6)]"
-          ></motion.div>
-          {/* wOBA stat point */}
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 0.6 }}
-            transition={{ delay: 1, duration: 0.5 }}
-            className="absolute top-[35%] right-[25%] w-3 h-3 bg-[#ff6b35] rounded-full shadow-[0_0_20px_rgba(255,107,53,0.6)]"
-          ></motion.div>
-          {/* FIP stat point */}
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 0.6 }}
-            transition={{ delay: 1.2, duration: 0.5 }}
-            className="absolute bottom-[30%] left-[70%] w-3 h-3 bg-[#00d9ff] rounded-full shadow-[0_0_20px_rgba(0,217,255,0.6)]"
-          ></motion.div>
+          {[
+            { symbol: 'WAR', top: '15%', left: '10%', delay: 0.5 },
+            { symbol: 'wOBA', top: '25%', right: '15%', delay: 0.7 },
+            { symbol: 'FIP', top: '60%', left: '85%', delay: 0.9 },
+            { symbol: 'OPS+', top: '70%', left: '12%', delay: 1.1 },
+            { symbol: 'wRC+', top: '40%', right: '8%', delay: 1.3 },
+          ].map((item, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{
+                opacity: [0.3, 0.6, 0.3],
+                y: [0, -10, 0]
+              }}
+              transition={{
+                delay: item.delay,
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="absolute font-mono font-bold text-2xl text-[#00d9ff]"
+              style={{ top: item.top, left: item.left, right: item.right }}
+            >
+              {item.symbol}
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Chart bars in background */}
+        <div className="absolute inset-0 flex items-end justify-center gap-8 opacity-[0.05] pb-20">
+          {[60, 80, 95, 70, 85, 75, 90].map((height, i) => (
+            <motion.div
+              key={i}
+              initial={{ height: 0 }}
+              animate={{ height: `${height}%` }}
+              transition={{ delay: 0.5 + i * 0.1, duration: 0.8 }}
+              className="w-8 bg-[#ffd23f]"
+            ></motion.div>
+          ))}
         </div>
 
         <motion.div
@@ -104,7 +127,7 @@ const Home: React.FC = () => {
             className="inline-block mb-8"
           >
             <div className="px-6 py-3 bg-[#1a2a47] border-2 border-[#ffd23f]">
-              <span className="font-mono font-bold text-[#ffd23f] text-sm tracking-[0.2em]">SABERMETRICS • 1971-PRESENT</span>
+              <span className="font-mono font-bold text-[#ffd23f] text-sm tracking-[0.2em]">UNDERSTANDING BASEBALL ANALYTICS</span>
             </div>
           </motion.div>
 
@@ -115,15 +138,15 @@ const Home: React.FC = () => {
               transition={{ delay: 0.5, duration: 0.8 }}
               className="block text-[#f5f1e8]"
             >
-              THE DATA
+              SABERMETRICS
             </motion.span>
             <motion.span
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.7, duration: 0.8 }}
-              className="block text-[#ff6b35] mt-2"
+              className="block text-[#ffd23f] mt-2"
             >
-              REVOLUTION
+              MADE SIMPLE
             </motion.span>
           </h1>
 
@@ -133,34 +156,8 @@ const Home: React.FC = () => {
             transition={{ delay: 1, duration: 0.8 }}
             className="text-xl md:text-2xl mb-12 text-[#cbd5e0] max-w-3xl mx-auto font-serif leading-relaxed"
           >
-            How advanced statistics transformed baseball from gut feelings to evidence-based decisions worth hundreds of millions
+            Learn how advanced statistics transformed baseball from gut feelings to data-driven decisions. Master WAR, wOBA, FIP, and more with clear explanations and real examples.
           </motion.p>
-
-          {/* Key Stats - Relevant to sabermetrics */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2, duration: 0.8 }}
-            className="flex justify-center gap-8 md:gap-16 flex-wrap"
-          >
-            {[
-              { num: '.366', label: 'TED WILLIAMS OBP', desc: 'The stat that started it all' },
-              { num: '10.5', label: 'MIKE TROUT WAR', desc: '2012-2019 average' },
-              { num: '$8M', label: 'PER WIN', desc: 'Free agent market value' },
-            ].map((item, i) => (
-              <div key={i} className="text-center max-w-[200px]">
-                <div className="scoreboard-num text-4xl md:text-5xl text-[#ffd23f] mb-2">
-                  {item.num}
-                </div>
-                <div className="font-mono text-xs text-[#ff6b35] tracking-widest mb-1">
-                  {item.label}
-                </div>
-                <div className="font-serif text-xs text-[#94a3b8] italic">
-                  {item.desc}
-                </div>
-              </div>
-            ))}
-          </motion.div>
         </motion.div>
 
         {/* Bottom gradient */}

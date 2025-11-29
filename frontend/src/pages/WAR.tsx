@@ -136,11 +136,70 @@ const WAR: React.FC = () => {
               />
             </div>
 
-            <p className="text-gray-700 leading-relaxed">
+            <p className="text-gray-700 leading-relaxed mb-8">
               All of these components are converted into <strong>runs</strong>, then divided by
               approximately 10 (since historically, 10 runs ≈ 1 win). Finally, a baseline is added
               to account for replacement level.
             </p>
+
+            {/* Calculation Formula */}
+            <div className="bg-white border-2 border-[#cbd5e0] p-8 my-8">
+              <div className="inline-block px-3 py-1 bg-[#ffd23f] mb-6">
+                <span className="font-mono text-xs text-[#0a1628] font-bold tracking-widest">THE CALCULATION</span>
+              </div>
+
+              <h3 className="text-2xl font-display font-black mb-4 text-[#0a1628]">How WAR is Calculated</h3>
+
+              <div className="space-y-6">
+                <div className="bg-[#fef5e7] p-6 border-l-4 border-[#ff6b35]">
+                  <h4 className="font-mono font-bold text-sm text-[#ff6b35] mb-3 tracking-widest">FORMULA</h4>
+                  <p className="font-mono text-lg mb-4 text-gray-800">
+                    WAR = (Batting Runs + Baserunning Runs + Fielding Runs + Positional Adjustment + League Adjustment + Replacement Runs) / (Runs Per Win)
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="font-display font-bold text-lg mb-3 text-[#0a1628]">Step-by-Step Breakdown:</h4>
+                  <ol className="space-y-4 list-decimal list-inside text-gray-700 font-serif">
+                    <li>
+                      <strong>Calculate Batting Runs:</strong> Use wOBA (weighted On-Base Average) to determine offensive value above average
+                    </li>
+                    <li>
+                      <strong>Add Baserunning Runs:</strong> Extra bases taken, stolen bases, avoiding double plays (typically +/- 5 runs per season)
+                    </li>
+                    <li>
+                      <strong>Add Fielding Runs:</strong> Defensive value measured by UZR (Ultimate Zone Rating) or DRS (Defensive Runs Saved)
+                    </li>
+                    <li>
+                      <strong>Positional Adjustment:</strong> Catchers and shortstops get bonus runs (~+10), first basemen get penalties (~-10)
+                    </li>
+                    <li>
+                      <strong>League Adjustment:</strong> Account for differences between AL and NL
+                    </li>
+                    <li>
+                      <strong>Add Replacement Level:</strong> ~20 runs per 600 plate appearances (replacement level baseline)
+                    </li>
+                    <li>
+                      <strong>Divide by Runs Per Win:</strong> Approximately 10 runs = 1 win (varies by run environment)
+                    </li>
+                  </ol>
+                </div>
+
+                <div className="bg-[#f0fff4] p-6 border-l-4 border-[#00d9ff]">
+                  <h4 className="font-mono font-bold text-sm text-[#00d9ff] mb-3 tracking-widest">EXAMPLE CALCULATION</h4>
+                  <p className="font-serif text-gray-800 mb-2">
+                    Player with 40 batting runs, +3 baserunning runs, +5 fielding runs, +5 positional adjustment, +20 replacement runs:
+                  </p>
+                  <p className="font-mono text-lg text-gray-900">
+                    WAR = (40 + 3 + 5 + 5 + 20) / 10 = <strong className="text-[#00d9ff]">7.3 WAR</strong>
+                  </p>
+                </div>
+
+                <div className="text-sm text-gray-600 font-serif italic">
+                  <strong>Note:</strong> There are different WAR calculations - fWAR (FanGraphs) uses FIP for pitchers, while bWAR (Baseball Reference) uses runs allowed. Both are valid and highly correlated.
+                </div>
+              </div>
+            </div>
           </section>
 
           {/* Interpreting WAR */}

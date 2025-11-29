@@ -72,6 +72,53 @@ const Offense: React.FC = () => {
                 <li>• <strong>.400+</strong>: Elite hitter (All-Star level)</li>
               </ul>
             </div>
+
+            {/* wOBA Calculation */}
+            <div className="bg-white border-2 border-[#cbd5e0] p-8 my-8">
+              <div className="inline-block px-3 py-1 bg-[#ffd23f] mb-6">
+                <span className="font-mono text-xs text-[#0a1628] font-bold tracking-widest">THE CALCULATION</span>
+              </div>
+
+              <h3 className="text-2xl font-display font-black mb-4 text-[#0a1628]">How to Calculate wOBA</h3>
+
+              <div className="space-y-6">
+                <div className="bg-[#fef5e7] p-6 border-l-4 border-[#ff6b35]">
+                  <h4 className="font-mono font-bold text-sm text-[#ff6b35] mb-3 tracking-widest">FORMULA (2023 weights)</h4>
+                  <p className="font-mono text-base mb-4 text-gray-800 break-words">
+                    wOBA = (0.69×BB + 0.72×HBP + 0.88×1B + 1.24×2B + 1.56×3B + 1.95×HR) / (AB + BB - IBB + SF + HBP)
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="font-display font-bold text-lg mb-3 text-[#0a1628]">What Each Component Means:</h4>
+                  <ul className="space-y-3 text-gray-700 font-serif">
+                    <li><strong>BB:</strong> Walks (unintentional) - worth 0.69 runs</li>
+                    <li><strong>HBP:</strong> Hit By Pitch - worth 0.72 runs</li>
+                    <li><strong>1B:</strong> Singles - worth 0.88 runs</li>
+                    <li><strong>2B:</strong> Doubles - worth 1.24 runs (41% more valuable than singles!)</li>
+                    <li><strong>3B:</strong> Triples - worth 1.56 runs</li>
+                    <li><strong>HR:</strong> Home runs - worth 1.95 runs (most valuable)</li>
+                  </ul>
+                </div>
+
+                <div className="bg-[#f0fff4] p-6 border-l-4 border-[#00d9ff]">
+                  <h4 className="font-mono font-bold text-sm text-[#00d9ff] mb-3 tracking-widest">EXAMPLE CALCULATION</h4>
+                  <p className="font-serif text-gray-800 mb-3">
+                    Player with 600 PA: 80 BB, 5 HBP, 120 1B, 35 2B, 3 3B, 25 HR, 500 AB, 8 SF
+                  </p>
+                  <div className="space-y-2 font-mono text-sm text-gray-900">
+                    <p>Numerator = (0.69×80) + (0.72×5) + (0.88×120) + (1.24×35) + (1.56×3) + (1.95×25)</p>
+                    <p>= 55.2 + 3.6 + 105.6 + 43.4 + 4.68 + 48.75 = <strong>261.23</strong></p>
+                    <p>Denominator = 500 + 80 - 0 + 8 + 5 = <strong>593</strong></p>
+                    <p className="text-lg mt-2">wOBA = 261.23 / 593 = <strong className="text-[#00d9ff]">.440</strong> (Elite!)</p>
+                  </div>
+                </div>
+
+                <div className="text-sm text-gray-600 font-serif italic">
+                  <strong>Note:</strong> The weights change slightly each year based on the run environment. These are 2023 values.
+                </div>
+              </div>
+            </div>
           </section>
 
           <section className="mb-12">

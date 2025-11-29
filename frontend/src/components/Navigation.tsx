@@ -28,17 +28,27 @@ const Navigation: React.FC = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
             <div className="relative">
-              <div className="w-12 h-12 bg-[#ff6b35] border-2 border-[#ffd23f] flex items-center justify-center group-hover:scale-110 transition-transform">
-                <span className="font-mono font-black text-2xl text-[#ffd23f]">📊</span>
+              {/* Baseball diamond logo */}
+              <div className="w-12 h-12 bg-[#0a1628] border-2 border-[#ffd23f] flex items-center justify-center group-hover:scale-110 transition-transform relative overflow-hidden">
+                {/* Diamond shape */}
+                <div className="w-6 h-6 bg-[#ffd23f] rotate-45 absolute"></div>
+                {/* Stats bars overlay */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="flex gap-[2px]">
+                    <div className="w-[2px] h-3 bg-[#00d9ff]"></div>
+                    <div className="w-[2px] h-4 bg-[#00d9ff]"></div>
+                    <div className="w-[2px] h-5 bg-[#00d9ff]"></div>
+                    <div className="w-[2px] h-4 bg-[#00d9ff]"></div>
+                  </div>
+                </div>
               </div>
-              <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-[#ffd23f]"></div>
             </div>
             <div>
-              <span className="font-display font-black text-2xl text-[#f5f1e8] tracking-tight block leading-none">
-                STATHEAD
-              </span>
-              <span className="font-mono text-[10px] text-[#ff6b35] tracking-widest">
+              <span className="font-display font-black text-xl text-[#f5f1e8] tracking-tight block leading-none">
                 SABERMETRICS
+              </span>
+              <span className="font-mono text-[9px] text-[#ffd23f] tracking-widest">
+                MADE SIMPLE
               </span>
             </div>
           </Link>
