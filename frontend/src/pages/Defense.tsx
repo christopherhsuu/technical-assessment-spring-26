@@ -6,11 +6,28 @@ import Comments from '../components/Comments';
 const Defense: React.FC = () => {
   return (
     <div className="min-h-screen">
-      <section className="bg-gradient-to-r from-green-400 to-green-600 text-white py-16 px-4">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl mx-auto">
-          <div className="text-6xl mb-4">🛡️</div>
-          <h1 className="text-4xl md:text-5xl font-display font-bold mb-4">Defensive Metrics</h1>
-          <p className="text-xl">Measuring defense beyond errors</p>
+      <section className="relative bg-[#1a2a47] text-white py-20 px-4 overflow-hidden border-b-4 border-[#00d9ff]">
+        {/* Background chart grid */}
+        <div className="absolute inset-0 opacity-[0.05]">
+          {[...Array(6)].map((_, i) => (
+            <div key={`h-${i}`} className="absolute left-0 right-0 h-px bg-[#00d9ff]" style={{ top: `${i * 20}%` }}></div>
+          ))}
+        </div>
+
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl mx-auto relative z-10">
+          <div className="inline-block mb-6 px-4 py-2 bg-[#00d9ff] border-2 border-[#ffd23f]">
+            <span className="font-mono text-sm tracking-widest text-[#0a1628] font-bold">DEFENSIVE ANALYTICS</span>
+          </div>
+
+          <h1 className="text-5xl md:text-7xl font-display font-black mb-6 leading-tight">
+            <span className="text-[#f5f1e8]">DEFENSIVE</span>
+            <br/>
+            <span className="text-[#00d9ff]">METRICS</span>
+          </h1>
+
+          <p className="text-xl md:text-2xl text-[#cbd5e0] font-serif max-w-2xl">
+            Measuring defense beyond errors
+          </p>
         </motion.div>
       </section>
 

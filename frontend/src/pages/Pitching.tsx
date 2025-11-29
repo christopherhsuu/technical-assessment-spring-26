@@ -6,11 +6,28 @@ import Comments from '../components/Comments';
 const Pitching: React.FC = () => {
   return (
     <div className="min-h-screen">
-      <section className="bg-gradient-to-r from-red-400 to-pink-600 text-white py-16 px-4">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl mx-auto">
-          <div className="text-6xl mb-4">⚡</div>
-          <h1 className="text-4xl md:text-5xl font-display font-bold mb-4">Pitching Metrics</h1>
-          <p className="text-xl">Predicting future performance better than ERA</p>
+      <section className="relative bg-[#ff6b35] text-white py-20 px-4 overflow-hidden border-b-4 border-[#ffd23f]">
+        {/* Background chart grid */}
+        <div className="absolute inset-0 opacity-[0.1]">
+          {[...Array(6)].map((_, i) => (
+            <div key={`h-${i}`} className="absolute left-0 right-0 h-px bg-white" style={{ top: `${i * 20}%` }}></div>
+          ))}
+        </div>
+
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl mx-auto relative z-10">
+          <div className="inline-block mb-6 px-4 py-2 bg-[#0a1628] border-2 border-[#ffd23f]">
+            <span className="font-mono text-sm tracking-widest text-[#ffd23f] font-bold">PITCHING ANALYTICS</span>
+          </div>
+
+          <h1 className="text-5xl md:text-7xl font-display font-black mb-6 leading-tight">
+            <span className="text-white">PITCHING</span>
+            <br/>
+            <span className="text-[#ffd23f]">METRICS</span>
+          </h1>
+
+          <p className="text-xl md:text-2xl text-white font-serif max-w-2xl">
+            Predicting future performance better than ERA
+          </p>
         </motion.div>
       </section>
 

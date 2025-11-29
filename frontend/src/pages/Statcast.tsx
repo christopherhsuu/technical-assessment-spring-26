@@ -6,11 +6,28 @@ import Comments from '../components/Comments';
 const Statcast: React.FC = () => {
   return (
     <div className="min-h-screen">
-      <section className="bg-gradient-to-r from-purple-400 to-indigo-600 text-white py-16 px-4">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl mx-auto">
-          <div className="text-6xl mb-4">🚀</div>
-          <h1 className="text-4xl md:text-5xl font-display font-bold mb-4">The Statcast Revolution</h1>
-          <p className="text-xl">The cutting edge of baseball analytics</p>
+      <section className="relative bg-[#0a1628] text-white py-20 px-4 overflow-hidden border-b-4 border-[#ffd23f]">
+        {/* Background chart grid */}
+        <div className="absolute inset-0 opacity-[0.05]">
+          {[...Array(6)].map((_, i) => (
+            <div key={`h-${i}`} className="absolute left-0 right-0 h-px bg-[#ffd23f]" style={{ top: `${i * 20}%` }}></div>
+          ))}
+        </div>
+
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl mx-auto relative z-10">
+          <div className="inline-block mb-6 px-4 py-2 bg-[#ffd23f] border-2 border-[#ff6b35]">
+            <span className="font-mono text-sm tracking-widest text-[#0a1628] font-bold">CUTTING EDGE TECH</span>
+          </div>
+
+          <h1 className="text-5xl md:text-7xl font-display font-black mb-6 leading-tight">
+            <span className="text-[#f5f1e8]">THE STATCAST</span>
+            <br/>
+            <span className="text-[#ffd23f]">REVOLUTION</span>
+          </h1>
+
+          <p className="text-xl md:text-2xl text-[#cbd5e0] font-serif max-w-2xl">
+            The cutting edge of baseball analytics
+          </p>
         </motion.div>
       </section>
 
