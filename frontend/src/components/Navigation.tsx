@@ -22,46 +22,52 @@ const Navigation: React.FC = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="bg-white border-b border-slate-200 sticky top-0 z-30 backdrop-blur-sm bg-white/95">
+    <nav className="bg-[#0a0e0d] border-b-4 border-[#f4e409] sticky top-0 z-30 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group">
-            <div className="w-8 h-8 bg-gradient-to-br from-teal-600 to-cyan-500 rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">
-              <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
-              </svg>
+        <div className="flex justify-between items-center h-20">
+          {/* Logo - Scoreboard Style */}
+          <Link to="/" className="flex items-center space-x-3 group">
+            <div className="relative">
+              <div className="w-12 h-12 bg-[#a14a3a] border-2 border-[#f4e409] flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span className="font-mono font-black text-2xl text-[#f4e409]">⚾</span>
+              </div>
+              <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-[#f4e409]"></div>
             </div>
-            <span className="font-display font-bold text-xl bg-gradient-to-r from-teal-700 to-cyan-600 bg-clip-text text-transparent">
-              DiamondIQ
-            </span>
+            <div>
+              <span className="font-display font-black text-2xl text-[#f5f1e8] tracking-tight block leading-none">
+                DiamondIQ
+              </span>
+              <span className="font-mono text-[10px] text-[#a14a3a] tracking-widest">
+                ANALYTICS LAB
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-1">
+          <div className="hidden md:flex space-x-2">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                className={`px-5 py-2.5 font-mono font-bold text-sm tracking-wide transition-all border-2 ${
                   isActive(link.path)
-                    ? 'bg-teal-600 text-white shadow-sm'
-                    : 'text-slate-700 hover:bg-slate-100'
+                    ? 'bg-[#f4e409] text-[#0a0e0d] border-[#f4e409] shadow-[4px_4px_0px_rgba(161,74,58,0.5)]'
+                    : 'bg-transparent text-[#e8e2d5] border-[#3a3f3e] hover:border-[#a14a3a] hover:text-[#f4e409]'
                 }`}
               >
-                {link.label}
+                {link.label.toUpperCase()}
               </Link>
             ))}
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100"
+            className="md:hidden p-3 border-2 border-[#f4e409] bg-[#0a0e0d] hover:bg-[#f4e409] hover:text-[#0a0e0d] transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle mobile menu"
           >
             <svg
-              className="w-6 h-6"
+              className="w-6 h-6 text-[#f4e409]"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -70,14 +76,14 @@ const Navigation: React.FC = () => {
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth={2}
+                  strokeWidth={3}
                   d="M6 18L18 6M6 6l12 12"
                 />
               ) : (
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth={2}
+                  strokeWidth={3}
                   d="M4 6h16M4 12h16M4 18h16"
                 />
               )}
@@ -91,20 +97,20 @@ const Navigation: React.FC = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden pb-4"
+            className="md:hidden pb-4 border-t-2 border-[#3a3f3e] mt-2 pt-4"
           >
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`block px-4 py-3 rounded-lg font-medium transition-all mb-1 ${
+                className={`block px-4 py-3 font-mono font-bold text-sm tracking-wide transition-all mb-2 border-l-4 ${
                   isActive(link.path)
-                    ? 'bg-teal-600 text-white'
-                    : 'text-slate-700 hover:bg-slate-100'
+                    ? 'bg-[#f4e409] text-[#0a0e0d] border-[#a14a3a]'
+                    : 'bg-[#1a1e1d] text-[#e8e2d5] border-[#3a3f3e] hover:border-[#f4e409] hover:text-[#f4e409]'
                 }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                {link.label}
+                {link.label.toUpperCase()}
               </Link>
             ))}
           </motion.div>
