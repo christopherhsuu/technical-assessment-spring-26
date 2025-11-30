@@ -136,6 +136,130 @@ const Pitching: React.FC = () => {
               time, their ERA will likely rise toward their FIP. They're a <strong>regression candidate</strong>.
             </p>
           </section>
+
+          <section className="mb-12">
+            <h2 className="text-3xl font-display font-bold mb-6">K-BB%: Strikeout Minus Walk Rate</h2>
+            <p className="text-gray-700 mb-4">
+              <strong>K-BB% (Strikeout Rate minus Walk Rate)</strong> is one of the simplest and most predictive pitching metrics.
+              It measures a pitcher's ability to miss bats while avoiding walks. The formula:
+            </p>
+
+            <div className="bg-white border-2 border-[#cbd5e0] p-6 my-6">
+              <p className="font-mono text-lg text-gray-800 mb-3">
+                K-BB% = (K / PA) - (BB / PA) × 100
+              </p>
+              <p className="text-sm text-gray-600 font-serif mb-3">
+                Or simply: K% minus BB%
+              </p>
+              <ul className="text-sm text-gray-700 font-serif space-y-1">
+                <li>• <strong>Below 10%:</strong> Poor control or stuff</li>
+                <li>• <strong>10-15%:</strong> Average pitcher</li>
+                <li>• <strong>15-20%:</strong> Above average, quality starter</li>
+                <li>• <strong>20%+:</strong> Elite, Cy Young caliber</li>
+              </ul>
+            </div>
+
+            <p className="text-gray-700">
+              A pitcher with 28% K rate and 8% BB rate has 20% K-BB%, indicating elite stuff and command. This metric is highly
+              stable year-to-year and correlates strongly with future ERA.
+            </p>
+          </section>
+
+          <section className="mb-12">
+            <h2 className="text-3xl font-display font-bold mb-6">CSW%: Called Strike + Whiff Rate</h2>
+            <p className="text-gray-700 mb-4">
+              <strong>CSW% (Called Strike plus Whiff percentage)</strong> is a newer metric that measures how often a pitcher gets
+              strikes without the ball being put in play. It's the percentage of pitches that are either called strikes or swinging strikes (whiffs).
+            </p>
+
+            <div className="bg-[#0a1628] border-4 border-[#ff6b35] p-8 my-8">
+              <div className="inline-block px-3 py-1 bg-[#ff6b35] mb-4">
+                <span className="font-mono text-xs text-white font-bold tracking-widest">CSW% SCALE</span>
+              </div>
+              <p className="text-[#f5f1e8] mb-4 font-serif text-lg">
+                Higher CSW% means better control and stuff:
+              </p>
+              <ul className="text-[#cbd5e0] space-y-2 mb-0 font-serif">
+                <li>• <strong>Below 25%:</strong> Poor command or weak stuff</li>
+                <li>• <strong>25-28%:</strong> Average</li>
+                <li>• <strong>28-30%:</strong> Above average</li>
+                <li>• <strong>30-32%:</strong> Excellent</li>
+                <li>• <strong>32%+:</strong> Elite (top 10% of pitchers)</li>
+              </ul>
+            </div>
+
+            <p className="text-gray-700">
+              CSW% is predictive because it's entirely within the pitcher's control—no defense or batted ball luck involved.
+              Pitchers with high CSW% consistently outperform their ERA over time.
+            </p>
+          </section>
+
+          <section className="mb-12">
+            <h2 className="text-3xl font-display font-bold mb-6">Stuff+: Rating Pitch Quality</h2>
+            <p className="text-gray-700 mb-4">
+              <strong>Stuff+</strong> is a cutting-edge metric that uses Statcast data (spin rate, velocity, movement) to rate
+              the quality of a pitcher's pitches. It's scaled like OPS+ and wRC+, where <strong>100 is average</strong>.
+            </p>
+
+            <div className="bg-white border-2 border-[#cbd5e0] p-6 my-6">
+              <h4 className="font-display font-bold text-lg mb-3 text-[#0a1628]">Stuff+ Explained:</h4>
+              <ul className="space-y-3 text-gray-700 font-serif">
+                <li>
+                  <strong>What it measures:</strong> Raw "stuff" based on velocity, spin rate, and movement characteristics.
+                  Answers "How nasty are this pitcher's pitches?"
+                </li>
+                <li>
+                  <strong>How it's calculated:</strong> Machine learning model trained on thousands of pitches to predict swing-and-miss
+                  and contact quality based purely on pitch characteristics.
+                </li>
+                <li>
+                  <strong>Scale:</strong> 100 = average. 110 = 10% better stuff than average. 90 = 10% worse than average.
+                </li>
+                <li>
+                  <strong>Elite threshold:</strong> 115+ Stuff+ indicates top-tier pitch quality (Spencer Strider, Gerrit Cole level).
+                </li>
+              </ul>
+            </div>
+
+            <p className="text-gray-700">
+              Stuff+ is valuable because it separates pitch quality from execution and luck. A pitcher with great Stuff+ but poor results
+              may just need better command or sequencing.
+            </p>
+          </section>
+
+          <section className="mb-12">
+            <h2 className="text-3xl font-display font-bold mb-6">WHIP: Walks + Hits Per Inning</h2>
+            <p className="text-gray-700 mb-4">
+              <strong>WHIP (Walks plus Hits per Inning Pitched)</strong> is a simple but effective measure of how many baserunners
+              a pitcher allows. Lower is better.
+            </p>
+
+            <div className="bg-white border-2 border-[#cbd5e0] p-6 my-6">
+              <p className="font-mono text-lg text-gray-800 mb-2">
+                WHIP = (BB + H) / IP
+              </p>
+              <ul className="text-sm text-gray-700 font-serif space-y-1 mt-3">
+                <li>• <strong>Below 1.00:</strong> Elite (few pitchers achieve this)</li>
+                <li>• <strong>1.00-1.20:</strong> Excellent</li>
+                <li>• <strong>1.20-1.30:</strong> Above average</li>
+                <li>• <strong>1.30-1.40:</strong> Average</li>
+                <li>• <strong>Above 1.40:</strong> Below average</li>
+              </ul>
+            </div>
+          </section>
+
+          <section className="mb-12">
+            <h2 className="text-3xl font-display font-bold mb-6">xFIP: Expected FIP</h2>
+            <p className="text-gray-700 mb-4">
+              <strong>xFIP (Expected Fielding Independent Pitching)</strong> takes FIP one step further by normalizing home run rate.
+              It assumes a league-average home run per fly ball rate (~10-11%), removing home run luck from the equation.
+            </p>
+
+            <p className="text-gray-700">
+              If a pitcher has FIP of 3.50 but xFIP of 4.00, they're likely getting lucky with fewer home runs than expected based on
+              fly ball rate. Over time, expect regression toward xFIP. This helps identify pitchers due for positive or negative changes.
+            </p>
+          </section>
         </motion.div>
 
         <Quiz

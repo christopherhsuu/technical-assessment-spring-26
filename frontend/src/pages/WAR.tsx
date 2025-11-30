@@ -38,17 +38,6 @@ const WAR: React.FC = () => {
           <p className="text-xl md:text-2xl text-[#cbd5e0] font-serif max-w-2xl">
             The ultimate all-in-one metric for measuring total player value
           </p>
-
-          {/* Stat highlight */}
-          <div className="mt-8 inline-block bg-[#1a2a47] border-l-4 border-[#ff6b35] p-6">
-            <div className="flex items-baseline space-x-4">
-              <span className="scoreboard-num text-5xl text-[#ffd23f]">8+</span>
-              <div>
-                <div className="font-mono text-xs text-[#ff6b35] tracking-widest">MVP SEASON</div>
-                <div className="font-serif text-sm text-[#cbd5e0]">Historic performance territory</div>
-              </div>
-            </div>
-          </div>
         </motion.div>
       </section>
 
@@ -76,6 +65,12 @@ const WAR: React.FC = () => {
               A "replacement player" is defined as a minor league player who could be called up at any time -
               essentially a freely available talent. Think of WAR as measuring how much better a player is
               than the minimum viable option.
+            </p>
+
+            <p className="text-gray-700 leading-relaxed mb-4">
+              <strong>Note:</strong> This page focuses on <strong>bWAR (Baseball Reference WAR)</strong>, which uses actual runs allowed
+              for pitchers. FanGraphs also publishes fWAR, which uses FIP for pitchers instead. Both are valid, highly correlated,
+              and tell similar stories about player value.
             </p>
 
             <div className="bg-[#0a1628] border-4 border-[#ffd23f] p-8 my-8">

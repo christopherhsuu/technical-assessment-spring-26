@@ -164,6 +164,76 @@ const Home: React.FC = () => {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#1a2a47] to-transparent"></div>
       </section>
 
+      {/* Introduction: The Analytics Revolution */}
+      <section className="bg-white py-20 px-4 border-b-4 border-[#ffd23f]">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-12"
+          >
+            <div className="inline-block px-4 py-2 bg-[#ff6b35] border-2 border-[#0a1628] mb-6">
+              <span className="font-mono text-xs text-white font-bold tracking-widest">THE BASEBALL REVOLUTION</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-display font-black mb-6 text-[#0a1628]">
+              How Baseball Discovered Better Ways to Measure Performance
+            </h2>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="prose prose-lg max-w-none"
+          >
+            <p className="text-xl text-gray-700 leading-relaxed mb-6 font-serif">
+              For over 130 years, baseball relied on the same simple statistics: <strong>batting average</strong>, <strong>home runs</strong>,
+              <strong> RBIs</strong>, <strong>wins</strong>, and <strong>ERA</strong>. These numbers told a story—but not the whole story.
+            </p>
+
+            <p className="text-lg text-gray-700 leading-relaxed mb-6 font-serif">
+              Starting in the 1970s and accelerating in the 2000s, researchers, statisticians, and teams began asking deeper questions:
+              <em> What actually wins baseball games? Which skills matter most? Can we predict future performance?</em> This led to the
+              <strong> sabermetrics revolution</strong>—named after SABR (Society for American Baseball Research).
+            </p>
+
+            <div className="bg-[#fef5e7] border-l-4 border-[#ff6b35] p-6 my-8">
+              <h3 className="font-display font-bold text-2xl mb-4 text-[#0a1628]">Why New Stats Matter</h3>
+              <ul className="space-y-3 text-gray-700 font-serif">
+                <li>
+                  <strong>More Nuanced:</strong> Modern stats separate luck from skill, revealing true talent levels that traditional stats miss.
+                </li>
+                <li>
+                  <strong>More Predictive:</strong> Advanced metrics like FIP and wRC+ predict future performance better than ERA and batting average.
+                  Teams use these to identify undervalued players and make smarter decisions.
+                </li>
+                <li>
+                  <strong>More Context:</strong> Stats like OPS+ and wRC+ adjust for ballpark and era, allowing fair comparisons across different
+                  environments and time periods.
+                </li>
+                <li>
+                  <strong>Deeper Understanding:</strong> Metrics like exit velocity, spin rate, and launch angle reveal <em>why</em> players succeed
+                  or struggle, not just that they did.
+                </li>
+              </ul>
+            </div>
+
+            <p className="text-lg text-gray-700 leading-relaxed mb-6 font-serif">
+              The 2003 book <em>Moneyball</em> brought these ideas into the mainstream, showing how the Oakland A's used statistics like
+              on-base percentage to compete with much wealthier teams. Today, every MLB team employs analysts, and the best organizations
+              use data to gain competitive advantages in player development, trades, and in-game strategy.
+            </p>
+
+            <p className="text-lg text-gray-700 leading-relaxed font-serif">
+              This site breaks down the most important modern stats in plain language. No math degree required—just curiosity about what
+              really makes players great. Let's dive in.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* The Story - Old vs New */}
       <section className="bg-gradient-to-br from-[#f5f1e8] to-[#e8e2d5] py-24 px-4">
         <div className="max-w-7xl mx-auto">

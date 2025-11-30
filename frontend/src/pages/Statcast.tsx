@@ -152,12 +152,152 @@ const Statcast: React.FC = () => {
           </section>
 
           <section className="mb-12">
-            <h2 className="text-3xl font-display font-bold mb-6">Beyond Hitting</h2>
-            <p className="text-gray-700">
-              Statcast measures everything: sprint speed (feet per second), arm strength (mph on throws), catch probability
-              (how hard was that catch?), and more. Teams use this data for player development, defensive positioning,
-              and scouting.
+            <h2 className="text-3xl font-display font-bold mb-6">Spin Rate & Pitch Movement</h2>
+            <p className="text-gray-700 mb-4">
+              <strong>Spin Rate</strong> measures how many revolutions per minute (RPM) a pitch rotates. Higher spin typically creates
+              more movement and makes pitches harder to hit. Statcast tracks spin with precision for every single pitch.
             </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div className="bg-[#fff5f0] border-2 border-[#ff6b35] p-6">
+                <h4 className="font-display font-bold text-xl mb-3 text-[#ff6b35]">Fastball Spin</h4>
+                <p className="font-serif text-gray-700 mb-3">
+                  Four-seam fastballs with high spin rates create "rise" effect (backspin fights gravity). Hitters swing under high-spin fastballs.
+                </p>
+                <ul className="text-sm text-gray-700 font-serif space-y-1">
+                  <li>• <strong>Elite:</strong> 2,500+ RPM (Gerrit Cole, Spencer Strider)</li>
+                  <li>• <strong>Above average:</strong> 2,300-2,500 RPM</li>
+                  <li>• <strong>Average:</strong> 2,200 RPM</li>
+                  <li>• <strong>Low spin:</strong> Below 2,100 RPM (sinkers, not four-seamers)</li>
+                </ul>
+              </div>
+
+              <div className="bg-[#f0fff4] border-2 border-[#00d9ff] p-6">
+                <h4 className="font-display font-bold text-xl mb-3 text-[#00d9ff]">Breaking Ball Spin</h4>
+                <p className="font-serif text-gray-700 mb-3">
+                  Curveballs and sliders with high spin rates have sharper, more deceptive movement. Spin axis determines break direction.
+                </p>
+                <ul className="text-sm text-gray-700 font-serif space-y-1">
+                  <li>• <strong>Elite curveball:</strong> 2,800+ RPM</li>
+                  <li>• <strong>Elite slider:</strong> 2,600+ RPM</li>
+                  <li>• <strong>Average curveball:</strong> 2,500 RPM</li>
+                  <li>• <strong>Average slider:</strong> 2,400 RPM</li>
+                </ul>
+              </div>
+            </div>
+
+            <p className="text-gray-700 font-serif">
+              <strong>Spin axis</strong> is equally important—a fastball with topspin will sink, while backspin creates ride. "Seam-shifted wake"
+              describes how seam orientation affects movement beyond spin alone. Modern pitchers optimize both spin rate and axis for maximum effectiveness.
+            </p>
+          </section>
+
+          <section className="mb-12">
+            <h2 className="text-3xl font-display font-bold mb-6">Bat Tracking Metrics</h2>
+            <p className="text-gray-700 mb-4">
+              Statcast now tracks bat speed, swing length, and bat path using high-speed cameras. This reveals hitting mechanics that were previously invisible.
+            </p>
+
+            <div className="bg-white border-2 border-[#cbd5e0] p-8 my-8">
+              <h4 className="font-display font-bold text-lg mb-3 text-[#0a1628]">Key Bat Metrics:</h4>
+              <ul className="space-y-4 text-gray-700 font-serif">
+                <li>
+                  <strong>Bat Speed (mph):</strong> Peak speed of the bat barrel through the hitting zone. Elite hitters like Aaron Judge have 80+ mph bat speed,
+                  while average is ~70-75 mph. Bat speed directly correlates with exit velocity and power.
+                </li>
+                <li>
+                  <strong>Swing Length (feet):</strong> The distance the bat travels from launch to contact. Shorter swings (6-7 ft) make contact more consistent.
+                  Longer swings (7.5+ ft) generate more power but lower contact rates.
+                </li>
+                <li>
+                  <strong>Attack Angle (degrees):</strong> The vertical angle of the bat path at contact. Positive attack angles (upward swing) match the downward
+                  plane of most pitches, creating optimal contact. +10° to +15° is common for power hitters.
+                </li>
+                <li>
+                  <strong>Time to Contact:</strong> How long from swing initiation to ball contact. Faster hitters can wait longer on pitches, improving pitch recognition.
+                  Elite: under 0.15 seconds.
+                </li>
+              </ul>
+            </div>
+
+            <p className="text-gray-700">
+              These metrics help identify mechanical flaws. A hitter with high bat speed but low exit velocity may have poor attack angle or
+              timing issues. Teams use this data for swing adjustments and player development.
+            </p>
+          </section>
+
+          <section className="mb-12">
+            <h2 className="text-3xl font-display font-bold mb-6">Swing Decision Metrics</h2>
+            <p className="text-gray-700 mb-4">
+              Statcast tracks every swing decision—when hitters swing, when they don't, and the outcomes. This measures plate discipline and pitch recognition.
+            </p>
+
+            <div className="bg-[#0a1628] border-4 border-[#ffd23f] p-8 my-8">
+              <div className="inline-block px-3 py-1 bg-[#ffd23f] mb-4">
+                <span className="font-mono text-xs text-[#0a1628] font-bold tracking-widest">CHASE RATE & ZONE%</span>
+              </div>
+              <p className="text-[#f5f1e8] mb-4 font-serif text-lg">
+                Two critical plate discipline metrics:
+              </p>
+              <ul className="text-[#cbd5e0] space-y-3 mb-0 font-serif">
+                <li>
+                  <strong>Chase Rate (O-Swing%):</strong> How often a hitter swings at pitches outside the strike zone.
+                  <ul className="ml-6 mt-2 space-y-1 text-sm">
+                    <li>• <strong>Elite discipline:</strong> Below 25% (Juan Soto, Luis Arraez)</li>
+                    <li>• <strong>Average:</strong> 28-32%</li>
+                    <li>• <strong>Free swinger:</strong> Above 35%</li>
+                  </ul>
+                </li>
+                <li className="mt-3">
+                  <strong>Zone Swing% (Z-Swing%):</strong> How often a hitter swings at pitches in the strike zone.
+                  <ul className="ml-6 mt-2 space-y-1 text-sm">
+                    <li>• <strong>Aggressive:</strong> Above 70%</li>
+                    <li>• <strong>Average:</strong> 65-68%</li>
+                    <li>• <strong>Passive:</strong> Below 60% (may take too many strikes)</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            <p className="text-gray-700">
+              The best hitters swing at strikes and lay off balls. Low chase rate + high zone swing% = elite plate discipline. This leads to better
+              walks, fewer strikeouts, and better pitch selection for hitting.
+            </p>
+          </section>
+
+          <section className="mb-12">
+            <h2 className="text-3xl font-display font-bold mb-6">Defense & Arm Strength</h2>
+            <p className="text-gray-700 mb-4">
+              Statcast revolutionized defensive measurement by tracking player movement and throw velocity with precision.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div className="bg-[#fef5e7] border-2 border-[#e8e2d5] p-6">
+                <h4 className="font-display font-bold text-xl mb-3 text-[#0a1628]">Arm Strength (MPH)</h4>
+                <p className="font-serif text-gray-700 mb-3">
+                  Measures the velocity of throws from outfielders, catchers, and infielders.
+                </p>
+                <ul className="text-sm text-gray-700 font-serif space-y-1">
+                  <li>• <strong>Elite OF arm:</strong> 95+ mph (Jesse Winker type)</li>
+                  <li>• <strong>Average OF:</strong> 87-90 mph</li>
+                  <li>• <strong>Elite C arm:</strong> 85+ mph (pop time matters too)</li>
+                  <li>• <strong>Elite IF arm:</strong> 90+ mph across diamond</li>
+                </ul>
+              </div>
+
+              <div className="bg-[#fef5e7] border-2 border-[#e8e2d5] p-6">
+                <h4 className="font-display font-bold text-xl mb-3 text-[#0a1628]">Pop Time (Catchers)</h4>
+                <p className="font-serif text-gray-700 mb-3">
+                  Time from pitch hitting catcher's glove to ball reaching second base on steal attempts.
+                </p>
+                <ul className="text-sm text-gray-700 font-serif space-y-1">
+                  <li>• <strong>Elite:</strong> Under 1.90 seconds (J.T. Realmuto)</li>
+                  <li>• <strong>Above average:</strong> 1.90-2.00 seconds</li>
+                  <li>• <strong>Average:</strong> 2.00-2.05 seconds</li>
+                  <li>• <strong>Below average:</strong> Above 2.05 seconds</li>
+                </ul>
+              </div>
+            </div>
           </section>
         </motion.div>
 

@@ -52,6 +52,95 @@ const Offense: React.FC = () => {
           </section>
 
           <section className="mb-12">
+            <h2 className="text-3xl font-display font-bold mb-6 text-gray-900">OBP: On-Base Percentage</h2>
+            <p className="text-gray-700 leading-relaxed mb-4">
+              <strong>On-Base Percentage (OBP)</strong> is a huge improvement over batting average because it includes walks
+              and hit-by-pitches. Getting on base is valuable regardless of how it happens. The formula is simple:
+            </p>
+
+            <div className="bg-white border-2 border-[#cbd5e0] p-6 my-6">
+              <p className="font-mono text-lg text-gray-800 mb-2">
+                OBP = (H + BB + HBP) / (AB + BB + HBP + SF)
+              </p>
+              <p className="text-sm text-gray-600 font-serif">
+                League average OBP is typically around .320. Anything above .360 is good, .400+ is elite.
+              </p>
+            </div>
+          </section>
+
+          <section className="mb-12">
+            <h2 className="text-3xl font-display font-bold mb-6 text-gray-900">SLG: Slugging Percentage</h2>
+            <p className="text-gray-700 leading-relaxed mb-4">
+              <strong>Slugging Percentage (SLG)</strong> measures power by weighting hits based on how many bases they're worth.
+              A double is worth twice as much as a single, a triple three times as much, and a home run four times as much.
+            </p>
+
+            <div className="bg-white border-2 border-[#cbd5e0] p-6 my-6">
+              <p className="font-mono text-lg text-gray-800 mb-3">
+                SLG = (1B + 2×2B + 3×3B + 4×HR) / AB
+              </p>
+              <p className="text-sm text-gray-600 font-serif mb-3">
+                Total Bases / At Bats
+              </p>
+              <ul className="text-sm text-gray-700 font-serif space-y-1">
+                <li>• <strong>.400 SLG:</strong> Average power</li>
+                <li>• <strong>.450 SLG:</strong> Good power</li>
+                <li>• <strong>.500+ SLG:</strong> Elite power hitter</li>
+              </ul>
+            </div>
+          </section>
+
+          <section className="mb-12">
+            <h2 className="text-3xl font-display font-bold mb-6 text-gray-900">OPS: The Quick Combo</h2>
+            <p className="text-gray-700 leading-relaxed mb-4">
+              <strong>OPS (On-Base Plus Slugging)</strong> is beautifully simple: just add OBP and SLG together. Despite being
+              a crude combination (adding two percentages with different denominators), it works surprisingly well as a quick
+              measure of offensive value.
+            </p>
+
+            <div className="bg-[#0a1628] border-4 border-[#00d9ff] p-8 my-8">
+              <div className="inline-block px-3 py-1 bg-[#00d9ff] mb-4">
+                <span className="font-mono text-xs text-[#0a1628] font-bold tracking-widest">OPS SCALE</span>
+              </div>
+              <p className="text-[#f5f1e8] mb-4 font-serif text-lg">
+                OPS combines getting on base with hitting for power:
+              </p>
+              <ul className="text-[#cbd5e0] space-y-2 mb-0 font-serif">
+                <li>• <strong>.700 or below:</strong> Below average hitter</li>
+                <li>• <strong>.700-.800:</strong> Average to above average</li>
+                <li>• <strong>.800-.900:</strong> Very good hitter</li>
+                <li>• <strong>.900+:</strong> Elite, All-Star level</li>
+                <li>• <strong>1.000+:</strong> MVP candidate (rare!)</li>
+              </ul>
+            </div>
+          </section>
+
+          <section className="mb-12">
+            <h2 className="text-3xl font-display font-bold mb-6 text-gray-900">OPS+: League and Park Adjusted</h2>
+            <p className="text-gray-700 leading-relaxed mb-4">
+              <strong>OPS+ (On-Base Plus Slugging Plus)</strong> takes OPS and adjusts it for league and ballpark context, then
+              scales it so <strong>100 is exactly average</strong>. A 130 OPS+ means the player is 30% better than league average.
+              An 80 OPS+ means 20% worse than average.
+            </p>
+            <p className="text-gray-700 leading-relaxed mb-4">
+              This makes cross-era and cross-park comparisons possible. A player with 140 OPS+ in the 1960s (pitcher-friendly era)
+              is directly comparable to a player with 140 OPS+ in the 2000s (hitter-friendly era).
+            </p>
+
+            <div className="bg-white border-2 border-[#cbd5e0] p-6 my-6">
+              <h4 className="font-display font-bold text-lg mb-3 text-[#0a1628]">OPS+ Benchmarks:</h4>
+              <ul className="space-y-2 text-gray-700 font-serif">
+                <li><strong>80-90:</strong> Below average</li>
+                <li><strong>100:</strong> Exactly league average</li>
+                <li><strong>110-120:</strong> Above average, solid starter</li>
+                <li><strong>120-140:</strong> Very good, All-Star caliber</li>
+                <li><strong>140-160:</strong> Elite, MVP candidate</li>
+                <li><strong>160+:</strong> Historic, all-time great season</li>
+              </ul>
+            </div>
+          </section>
+
+          <section className="mb-12">
             <h2 className="text-3xl font-display font-bold mb-6 text-gray-900">wOBA: Weighted On-Base Average</h2>
             <p className="text-gray-700 leading-relaxed mb-4">
               <strong>wOBA (weighted On-Base Average)</strong> fixes batting average's biggest problem: it properly values

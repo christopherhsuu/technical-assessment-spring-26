@@ -55,12 +55,77 @@ const Defense: React.FC = () => {
             <h2 className="text-3xl font-display font-bold mb-6">Modern Defensive Stats</h2>
             <p className="text-gray-700 mb-4">
               Modern metrics like <strong>DRS (Defensive Runs Saved)</strong>, <strong>UZR (Ultimate Zone Rating)</strong>,
-              and <strong>OAA (Outs Above Average)</strong> actually measure how many runs a defender saves compared to average.
+              <strong>OAA (Outs Above Average)</strong>, and <strong>FRV (Fielding Run Value)</strong> actually measure how many runs a defender saves compared to average.
             </p>
             <p className="text-gray-700">
               These stats account for range, arm strength, and positioning. A +10 DRS means a player saved 10 more runs
               than an average defender at their position. That's huge!
             </p>
+
+            <div className="bg-white border-2 border-[#cbd5e0] p-6 my-8">
+              <h4 className="font-display font-bold text-lg mb-3 text-[#0a1628]">Comparing Defense Metrics:</h4>
+              <ul className="space-y-4 text-gray-700 font-serif">
+                <li>
+                  <strong>DRS (Defensive Runs Saved):</strong> Calculated by Sports Info Solutions (SIS) using video review of every play.
+                  Breaks down into Range Runs, Error Runs, Arm Runs, and Double Play Runs. Zero is average. Most comprehensive metric.
+                </li>
+                <li>
+                  <strong>UZR (Ultimate Zone Rating):</strong> Published by FanGraphs, uses similar methodology to DRS but different data sources
+                  and zone definitions. Also measures runs saved above/below average. Highly correlated with DRS (~0.9 correlation).
+                </li>
+                <li>
+                  <strong>OAA (Outs Above Average):</strong> Statcast-based metric that uses actual ball tracking data (exit velocity, launch angle,
+                  direction) to calculate catch probability. More objective than DRS/UZR since it uses measured data instead of human classification.
+                </li>
+                <li>
+                  <strong>FRV (Fielding Run Value):</strong> Measures defensive value in total runs saved across all defensive actions. Similar scale to
+                  DRS but may use different weightings for different play types.
+                </li>
+              </ul>
+              <p className="text-sm text-gray-600 font-serif italic mt-4">
+                <strong>Which to use?</strong> All are valid. DRS and UZR are most established. OAA is newest and most objective. For beginners, focus on DRS—it's most widely cited.
+              </p>
+            </div>
+          </section>
+
+          <section className="mb-12">
+            <h2 className="text-3xl font-display font-bold mb-6">Statcast Defense: Reaction Time & Sprint Speed</h2>
+            <p className="text-gray-700 mb-4">
+              Statcast revolutionized defensive measurement by tracking every player movement with precision. Two key metrics show athleticism:
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div className="bg-[#f0fff4] border-2 border-[#00d9ff] p-6">
+                <h4 className="font-display font-bold text-xl mb-3 text-[#00d9ff]">Reaction Time</h4>
+                <p className="font-serif text-gray-700 mb-3">
+                  Measures how quickly a fielder reacts after the ball is hit. Calculated as the time from bat-ball contact until the fielder's first movement.
+                </p>
+                <ul className="text-sm text-gray-700 font-serif space-y-1">
+                  <li>• <strong>Elite:</strong> Under 0.70 seconds</li>
+                  <li>• <strong>Average:</strong> 0.70-0.85 seconds</li>
+                  <li>• <strong>Slow:</strong> Above 0.85 seconds</li>
+                </ul>
+              </div>
+
+              <div className="bg-[#fff5f0] border-2 border-[#ff6b35] p-6">
+                <h4 className="font-display font-bold text-xl mb-3 text-[#ff6b35]">Sprint Speed</h4>
+                <p className="font-serif text-gray-700 mb-3">
+                  Measures a player's max speed in feet/second, based on the fastest one-second window during any play. Shows pure athleticism.
+                </p>
+                <ul className="text-sm text-gray-700 font-serif space-y-1">
+                  <li>• <strong>Elite:</strong> 30+ ft/sec (Trea Turner, Byron Buxton)</li>
+                  <li>• <strong>Above average:</strong> 28-30 ft/sec</li>
+                  <li>• <strong>Average:</strong> 27 ft/sec</li>
+                  <li>• <strong>Below average:</strong> Under 27 ft/sec</li>
+                </ul>
+              </div>
+            </div>
+
+            <p className="text-gray-700 font-serif">
+              These metrics help explain <em>why</em> a player has good or bad range. A center fielder with 30 ft/sec sprint speed and 0.65 sec reaction time
+              will cover far more ground than an average defender, leading to higher DRS/UZR/OAA.
+            </p>
+          </section>
 
             {/* DRS Scale */}
             <div className="bg-[#0a1628] border-4 border-[#00d9ff] p-8 my-8">
