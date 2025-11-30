@@ -311,11 +311,11 @@ const Home: React.FC = () => {
                       <div className="relative bg-[#fdfbf7] border-8 border-[#3a3f3e] shadow-[8px_8px_0px_rgba(161,74,58,0.3)] hover:shadow-[12px_12px_0px_rgba(161,74,58,0.4)] transition-all">
                         {/* Top banner with stat */}
                         <div className="bg-[#0a0e0d] p-4 border-b-4 border-[#a14a3a]">
-                          <div className="flex justify-between items-center">
-                            <div className="font-mono text-xs text-[#f4e409] tracking-widest">
+                          <div className="flex justify-between items-center gap-2">
+                            <div className="font-mono text-xs text-[#f4e409] tracking-widest whitespace-nowrap">
                               {card.statLabel.toUpperCase()}
                             </div>
-                            <div className="scoreboard-num text-3xl text-[#f4e409]">
+                            <div className="scoreboard-num text-3xl text-[#f4e409] whitespace-nowrap">
                               {card.stat}
                             </div>
                           </div>
@@ -411,10 +411,6 @@ const Home: React.FC = () => {
               </div>
             </motion.button>
           </Link>
-
-          <p className="mt-8 font-mono text-sm text-[#ff6b35] tracking-wider">
-            NO SIGNUP REQUIRED • FREE FOREVER
-          </p>
         </motion.div>
       </section>
     </div>
