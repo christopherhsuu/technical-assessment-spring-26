@@ -193,6 +193,25 @@ const Home: React.FC = () => {
               <strong> RBIs</strong>, <strong>wins</strong>, and <strong>ERA</strong>. These numbers told a story—but not the whole story.
             </p>
 
+            <div className="bg-[#f0fff4] border-l-4 border-[#00d9ff] p-6 my-8">
+              <h3 className="font-display font-bold text-2xl mb-4 text-[#0a1628]">The Problem: Players Are Multifaceted</h3>
+              <p className="text-gray-700 font-serif mb-4">
+                Baseball players are incredibly complex. A single player might:
+              </p>
+              <ul className="space-y-2 text-gray-700 font-serif">
+                <li>• Hit for power but strike out frequently</li>
+                <li>• Get on base often with walks despite a low batting average</li>
+                <li>• Play Gold Glove defense but contribute little offense</li>
+                <li>• Excel at one position but struggle defensively at another</li>
+                <li>• Perform differently in hitter-friendly vs. pitcher-friendly ballparks</li>
+              </ul>
+              <p className="text-gray-700 font-serif mt-4">
+                <strong>How do you compare two players with completely different skill sets?</strong> How do you value a great-fielding shortstop
+                with a .250 average against a poor-fielding first baseman hitting .300? Traditional stats can't answer this—they're too one-dimensional.
+                Modern sabermetrics provides <em>nuanced, multifaceted ways</em> to describe and compare players across all their skills.
+              </p>
+            </div>
+
             <p className="text-lg text-gray-700 leading-relaxed mb-6 font-serif">
               Starting in the 1970s and accelerating in the 2000s, researchers, statisticians, and teams began asking deeper questions:
               <em> What actually wins baseball games? Which skills matter most? Can we predict future performance?</em> This led to the
@@ -379,18 +398,6 @@ const Home: React.FC = () => {
                     >
                       {/* Baseball card design */}
                       <div className="relative bg-[#fdfbf7] border-8 border-[#3a3f3e] shadow-[8px_8px_0px_rgba(161,74,58,0.3)] hover:shadow-[12px_12px_0px_rgba(161,74,58,0.4)] transition-all">
-                        {/* Top banner with stat */}
-                        <div className="bg-[#0a0e0d] p-4 border-b-4 border-[#a14a3a]">
-                          <div className="flex justify-between items-center gap-2">
-                            <div className="font-mono text-xs text-[#f4e409] tracking-widest whitespace-nowrap">
-                              {card.statLabel.toUpperCase()}
-                            </div>
-                            <div className="scoreboard-num text-3xl text-[#f4e409] whitespace-nowrap">
-                              {card.stat}
-                            </div>
-                          </div>
-                        </div>
-
                         {/* Card content */}
                         <div className="p-6">
                           <h3 className="text-3xl font-display font-black mb-2 text-[#0f2818] tracking-tight">

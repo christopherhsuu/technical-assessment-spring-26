@@ -181,6 +181,27 @@ const WAR: React.FC = () => {
                 </div>
 
                 <div className="bg-[#f0fff4] p-6 border-l-4 border-[#00d9ff]">
+                  <h4 className="font-mono font-bold text-sm text-[#00d9ff] mb-3 tracking-widest">WHY POSITIONAL ADJUSTMENTS?</h4>
+                  <p className="text-gray-700 font-serif mb-3">
+                    The positional adjustment is crucial but often confusing. <strong>Why do catchers and shortstops get bonuses while first basemen
+                    and designated hitters get penalties?</strong> It's about scarcity and difficulty.
+                  </p>
+                  <p className="text-gray-700 font-serif mb-3">
+                    Defense at catcher and shortstop is <em>much harder</em> than at first base. Most great athletes can play first base adequately,
+                    but finding someone who can play shortstop well is rare. Teams are forced to accept lower offensive production from these positions
+                    because the defensive demands are so high.
+                  </p>
+                  <p className="text-gray-700 font-serif mb-3">
+                    <strong>Example:</strong> A shortstop hitting .270 with 15 HR might be more valuable than a first baseman hitting .300 with 30 HR,
+                    because the shortstop is providing elite defense at a premium position while the first baseman is just doing what's expected.
+                  </p>
+                  <p className="text-gray-700 font-serif">
+                    The positional adjustments ensure WAR accounts for this reality. It's not just about <em>what</em> you produce, but
+                    <em>where</em> you produce it. A +5 WAR catcher is harder to find than a +5 WAR first baseman, making them more valuable.
+                  </p>
+                </div>
+
+                <div className="bg-[#f0fff4] p-6 border-l-4 border-[#00d9ff]">
                   <h4 className="font-mono font-bold text-sm text-[#00d9ff] mb-3 tracking-widest">EXAMPLE CALCULATION</h4>
                   <p className="font-serif text-gray-800 mb-2">
                     Player with 40 batting runs, +3 baserunning runs, +5 fielding runs, +5 positional adjustment, +20 replacement runs:

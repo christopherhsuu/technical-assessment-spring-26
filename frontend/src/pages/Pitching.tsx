@@ -108,6 +108,32 @@ const Pitching: React.FC = () => {
                   </ul>
                 </div>
 
+                <div className="bg-[#fef5e7] p-6 border-l-4 border-[#ff6b35]">
+                  <h4 className="font-mono font-bold text-sm text-[#ff6b35] mb-3 tracking-widest">WHY THESE SPECIFIC WEIGHTS?</h4>
+                  <p className="text-gray-700 font-serif mb-3">
+                    The weights in FIP (13, 3, 3, -2) aren't arbitrary—they're based on decades of run expectancy research.
+                    Statisticians analyzed millions of plate appearances to determine how much each outcome affects run scoring:
+                  </p>
+                  <ul className="space-y-2 text-gray-700 font-serif text-sm">
+                    <li>
+                      <strong>×13 for HR:</strong> Home runs guarantee at least one run and often more with runners on. They're catastrophic
+                      for pitchers, so they get the heaviest penalty.
+                    </li>
+                    <li>
+                      <strong>×3 for BB/HBP:</strong> Walks and hit batters put runners on base for free, significantly increasing run probability.
+                      They're roughly 3x as damaging as a strikeout is helpful.
+                    </li>
+                    <li>
+                      <strong>-2 for K:</strong> Strikeouts are guaranteed outs with zero chance of advancing runners or errors.
+                      They're valuable but not as impactful as the negative events, hence the smaller magnitude.
+                    </li>
+                  </ul>
+                  <p className="text-gray-700 font-serif mt-3">
+                    These weights reflect <em>true run value</em>, not arbitrary scoring. That's why FIP predicts future ERA so accurately—it's
+                    measuring what actually matters for preventing runs.
+                  </p>
+                </div>
+
                 <div className="bg-[#f0fff4] p-6 border-l-4 border-[#00d9ff]">
                   <h4 className="font-mono font-bold text-sm text-[#00d9ff] mb-3 tracking-widest">EXAMPLE CALCULATION</h4>
                   <p className="font-serif text-gray-800 mb-3">

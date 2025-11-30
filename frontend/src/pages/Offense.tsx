@@ -88,6 +88,23 @@ const Offense: React.FC = () => {
                 <li>• <strong>.500+ SLG:</strong> Elite power hitter</li>
               </ul>
             </div>
+
+            <div className="bg-[#f0fff4] border-l-4 border-[#00d9ff] p-6 my-6">
+              <h4 className="font-display font-bold text-lg mb-3 text-[#00d9ff]">Why Weight Hits Differently?</h4>
+              <p className="text-gray-700 font-serif mb-3">
+                The weights in SLG (×1, ×2, ×3, ×4) correspond to the number of bases gained. But why does this matter?
+                <strong> Because extra-base hits create exponentially more run-scoring opportunities.</strong>
+              </p>
+              <p className="text-gray-700 font-serif mb-3">
+                A double isn't just "better" than a single—it's <em>much</em> better. With a runner on first, a single might advance them to second,
+                but a double likely scores them. A home run guarantees a run. Historical analysis shows that each additional base on a hit creates
+                disproportionately more value than the last.
+              </p>
+              <p className="text-gray-700 font-serif">
+                This is why batting average is misleading—it treats a bloop single the same as a 450-foot home run. SLG recognizes that power
+                has real, measurable value in run production.
+              </p>
+            </div>
           </section>
 
           <section className="mb-12">

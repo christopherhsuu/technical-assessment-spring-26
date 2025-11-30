@@ -17,6 +17,7 @@ const Navigation: React.FC = () => {
     { path: '/pitching', label: 'Pitching' },
     { path: '/defense', label: 'Defense' },
     { path: '/statcast', label: 'Statcast' },
+    { path: '/glossary', label: 'Glossary' },
   ];
 
   const isActive = (path: string) => location.pathname === path;

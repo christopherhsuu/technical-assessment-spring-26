@@ -10,6 +10,7 @@ import Offense from './pages/Offense';
 import Pitching from './pages/Pitching';
 import Defense from './pages/Defense';
 import Statcast from './pages/Statcast';
+import Glossary from './pages/Glossary';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/pitching" element={<Pitching />} />
           <Route path="/defense" element={<Defense />} />
           <Route path="/statcast" element={<Statcast />} />
+          <Route path="/glossary" element={<Glossary />} />
         </Routes>
       </div>
     </Router>
