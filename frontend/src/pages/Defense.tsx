@@ -127,6 +127,7 @@ const Defense: React.FC = () => {
             </p>
           </section>
 
+          <section className="mb-12">
             {/* DRS Scale */}
             <div className="bg-[#0a1628] border-4 border-[#00d9ff] p-8 my-8">
               <div className="inline-block px-3 py-1 bg-[#00d9ff] mb-4">
