@@ -11,41 +11,41 @@ const Home: React.FC = () => {
       path: '/war',
       title: 'WAR',
       subtitle: 'Wins Above Replacement',
-      description: 'The ultimate all-in-one metric for measuring player value',
-      stat: '8.5',
-      statLabel: 'Elite Season',
+      description: 'Combines hitting, fielding, and baserunning into one number that shows total player value',
+      stat: 'What is WAR?',
+      statLabel: 'Start Here',
     },
     {
       path: '/offense',
-      title: 'Offensive Metrics',
+      title: 'Hitting Stats',
       subtitle: 'wOBA & wRC+',
-      description: 'Why batting average doesn\'t tell the whole story',
-      stat: '.400',
-      statLabel: 'wOBA Benchmark',
+      description: 'Learn why a walk can be as valuable as a hit, and why batting average is misleading',
+      stat: 'Better than AVG',
+      statLabel: 'Hitting Explained',
     },
     {
       path: '/pitching',
-      title: 'Pitching Metrics',
+      title: 'Pitching Stats',
       subtitle: 'FIP & xFIP',
-      description: 'Predicting future performance better than ERA',
-      stat: '2.50',
-      statLabel: 'Elite FIP',
+      description: 'Understand what pitchers actually control and how to predict future performance',
+      stat: 'Beyond ERA',
+      statLabel: 'Pitching Explained',
     },
     {
       path: '/defense',
-      title: 'Defensive Metrics',
+      title: 'Fielding Stats',
       subtitle: 'DRS, UZR & OAA',
-      description: 'Measuring defense beyond errors',
-      stat: '+15',
-      statLabel: 'Gold Glove DRS',
+      description: 'Discover how modern stats measure defensive range and value, not just errors',
+      stat: 'Beyond Errors',
+      statLabel: 'Defense Explained',
     },
     {
       path: '/statcast',
-      title: 'Statcast Revolution',
+      title: 'Statcast Data',
       subtitle: 'Exit Velo & Launch Angle',
-      description: 'The cutting edge of baseball analytics',
-      stat: '110',
-      statLabel: 'MPH Exit Velo',
+      description: 'See how cameras and radar track every movement on the field to measure performance',
+      stat: 'Camera Tech',
+      statLabel: 'Technology Explained',
     },
   ];
 
@@ -156,7 +156,7 @@ const Home: React.FC = () => {
             transition={{ delay: 1, duration: 0.8 }}
             className="text-xl md:text-2xl mb-12 text-[#cbd5e0] max-w-3xl mx-auto font-serif leading-relaxed"
           >
-            Learn how advanced statistics transformed baseball from gut feelings to data-driven decisions. Master WAR, wOBA, FIP, and more with clear explanations and real examples.
+            New to baseball stats? No problem. Learn how numbers reveal the true story of player performance, with clear explanations and step-by-step examples.
           </motion.p>
         </motion.div>
 
@@ -175,11 +175,11 @@ const Home: React.FC = () => {
             className="text-center mb-20"
           >
             <h2 className="text-5xl md:text-6xl font-display font-bold mb-6 text-[#0a1628]">
-              The Paradigm Shift
+              Old Stats vs. New Stats
             </h2>
             <div className="w-32 h-1 bg-[#ff6b35] mx-auto mb-6"></div>
-            <p className="text-xl text-[#4a5568] max-w-3xl mx-auto font-serif italic">
-              How baseball went from tradition to analytics—and why it took so long
+            <p className="text-xl text-[#4a5568] max-w-3xl mx-auto font-serif">
+              Understanding why baseball changed how it measures player performance
             </p>
           </motion.div>
 
@@ -282,11 +282,11 @@ const Home: React.FC = () => {
           >
             <div className="text-center mb-20">
               <h2 className="text-6xl font-display font-bold mb-6 text-[#0f2818]">
-                THE METRICS
+                Learn the Basics
               </h2>
               <div className="w-32 h-1 bg-[#a14a3a] mx-auto mb-6"></div>
-              <p className="text-xl text-[#3a3f3e] max-w-2xl mx-auto font-serif italic">
-                Five revolutionary statistics that changed the game forever
+              <p className="text-xl text-[#3a3f3e] max-w-2xl mx-auto font-serif">
+                Each stat is explained step-by-step with examples and calculations
               </p>
             </div>
 
@@ -383,15 +383,14 @@ const Home: React.FC = () => {
             </div>
 
             <h2 className="text-5xl md:text-7xl font-display font-bold mb-8 text-[#f5f1e8] leading-tight">
-              MASTER THE<br/>
+              READY TO<br/>
               <span className="text-[#ffd23f]">
-                NUMBERS GAME
+                GET STARTED?
               </span>
             </h2>
 
             <p className="text-xl md:text-2xl text-[#cbd5e0] mb-12 max-w-3xl mx-auto font-serif leading-relaxed">
-              Interactive quizzes. Real examples. Community discussions.<br/>
-              Everything you need to think like an MLB front office.
+              No baseball knowledge required. Learn at your own pace with interactive quizzes and real examples.
             </p>
           </div>
 

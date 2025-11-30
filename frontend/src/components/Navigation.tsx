@@ -26,23 +26,7 @@ const Navigation: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3 group">
-            <div className="relative">
-              {/* Baseball diamond logo */}
-              <div className="w-12 h-12 bg-[#0a1628] border-2 border-[#ffd23f] flex items-center justify-center group-hover:scale-110 transition-transform relative overflow-hidden">
-                {/* Diamond shape */}
-                <div className="w-6 h-6 bg-[#ffd23f] rotate-45 absolute"></div>
-                {/* Stats bars overlay */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="flex gap-[2px]">
-                    <div className="w-[2px] h-3 bg-[#00d9ff]"></div>
-                    <div className="w-[2px] h-4 bg-[#00d9ff]"></div>
-                    <div className="w-[2px] h-5 bg-[#00d9ff]"></div>
-                    <div className="w-[2px] h-4 bg-[#00d9ff]"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <Link to="/" className="flex items-center group">
             <div>
               <span className="font-display font-black text-xl text-[#f5f1e8] tracking-tight block leading-none">
                 SABERMETRICS
