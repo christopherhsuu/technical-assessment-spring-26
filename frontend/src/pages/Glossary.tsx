@@ -1,6 +1,7 @@
 // Glossary Page - Baseball Terms Index
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import Comments from '../components/Comments';
 
 const Glossary: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -421,6 +422,9 @@ const Glossary: React.FC = () => {
             <p className="text-gray-600 font-serif mt-2">Try searching for abbreviations like "SF", "OBP", or "WAR"</p>
           </div>
         )}
+
+        {/* Comments Section */}
+        <Comments pageRoute="/glossary" />
       </article>
     </div>
   );
