@@ -128,6 +128,8 @@ const Defense: React.FC = () => {
           </section>
 
           <section className="mb-12">
+            <h2 className="text-3xl font-display font-bold mb-6">Understanding DRS</h2>
+
             {/* DRS Scale */}
             <div className="bg-[#0a1628] border-4 border-[#00d9ff] p-8 my-8">
               <div className="inline-block px-3 py-1 bg-[#00d9ff] mb-4">
