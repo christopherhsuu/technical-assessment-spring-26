@@ -3,6 +3,7 @@
 // Includes quiz and comments section
 
 import { motion } from 'framer-motion';
+import { Target, TrendingUp, Shield, MapPin } from 'lucide-react';
 import Quiz from '../components/Quiz';
 import Comments from '../components/Comments';
 import StatCard from '../components/StatCard';
@@ -105,28 +106,28 @@ const WAR: React.FC = () => {
                 title="Batting"
                 value="40-50%"
                 description="Offensive production: hits, walks, home runs, etc."
-                icon="🏏"
+                icon={<Target size={32} strokeWidth={2.5} />}
                 color="blue"
               />
               <StatCard
                 title="Baserunning"
                 value="5-10%"
                 description="Stolen bases, taking extra bases, avoiding double plays"
-                icon="🏃"
+                icon={<TrendingUp size={32} strokeWidth={2.5} />}
                 color="green"
               />
               <StatCard
                 title="Fielding"
                 value="20-30%"
                 description="Defensive plays, range, and preventing runs"
-                icon="🛡️"
+                icon={<Shield size={32} strokeWidth={2.5} />}
                 color="gray"
               />
               <StatCard
                 title="Positional Adjustment"
                 value="10-20%"
                 description="Harder positions (catcher, shortstop) get extra credit"
-                icon="📍"
+                icon={<MapPin size={32} strokeWidth={2.5} />}
                 color="red"
               />
             </div>

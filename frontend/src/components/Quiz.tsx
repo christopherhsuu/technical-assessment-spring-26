@@ -4,6 +4,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Check, X, Circle } from 'lucide-react';
 import { quizApi } from '../services/api';
 import { useSocket } from '../hooks/useSocket';
 import { useUsername } from '../hooks/useUsername';
@@ -236,10 +237,10 @@ const Quiz: React.FC<QuizProps> = ({ quizId, question, options, correctAnswer })
                     <div className="flex items-center space-x-3">
                       {/* Show correct/incorrect icon after voting */}
                       {showResults && isThisCorrect && (
-                        <span className="text-[#00d9ff] text-2xl font-bold">✓</span>
+                        <Check className="text-[#00d9ff]" size={28} strokeWidth={3} />
                       )}
                       {showResults && isSelected && !isThisCorrect && (
-                        <span className="text-[#ff6b35] text-2xl font-bold">✗</span>
+                        <X className="text-[#ff6b35]" size={28} strokeWidth={3} />
                       )}
 
                       {/* Show percentage after voting */}
@@ -295,11 +296,17 @@ const Quiz: React.FC<QuizProps> = ({ quizId, question, options, correctAnswer })
             <p className="text-sm font-serif text-gray-700">
               Total votes: <span className="font-mono font-bold text-[#0a1628]">{totalVotes}</span>
               {' • '}
-              <span className="text-xs font-mono">
+              <span className="text-xs font-mono flex items-center gap-1">
                 {isConnected ? (
-                  <span className="text-[#00d9ff]">● Live updates enabled</span>
+                  <>
+                    <Circle className="text-[#00d9ff]" size={8} fill="currentColor" />
+                    <span className="text-[#00d9ff]">Live updates enabled</span>
+                  </>
                 ) : (
-                  <span className="text-[#ff6b35]">● Reconnecting...</span>
+                  <>
+                    <Circle className="text-[#ff6b35]" size={8} fill="currentColor" />
+                    <span className="text-[#ff6b35]">Reconnecting...</span>
+                  </>
                 )}
               </span>
             </p>
