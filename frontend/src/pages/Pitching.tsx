@@ -1,11 +1,16 @@
-// Pitching Metrics Page - FIP and xFIP
+// Pitching Metrics Page
+// Comprehensive explanation of modern pitching evaluation beyond ERA
+
 import { motion } from 'framer-motion';
+import { Activity, Target, Zap, TrendingDown, BarChart3, Crosshair } from 'lucide-react';
 import Quiz from '../components/Quiz';
 import Comments from '../components/Comments';
+import StatCard from '../components/StatCard';
 
 const Pitching: React.FC = () => {
   return (
     <div className="min-h-screen">
+      {/* Hero */}
       <section className="relative bg-[#ff6b35] text-white py-20 px-4 overflow-hidden border-b-4 border-[#ffd23f]">
         {/* Background chart grid */}
         <div className="absolute inset-0 opacity-[0.1]">
@@ -26,58 +31,89 @@ const Pitching: React.FC = () => {
           </h1>
 
           <p className="text-xl md:text-2xl text-white font-serif max-w-2xl">
-            Predicting future performance better than ERA
+            Separating skill from luck: How modern metrics predict pitching performance better than ERA
           </p>
         </motion.div>
       </section>
 
       <article className="max-w-4xl mx-auto px-4 py-12">
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="prose prose-lg max-w-none">
-          <section className="mb-12">
-            <h2 className="text-3xl font-display font-bold mb-6">What is ERA?</h2>
-            <p className="text-gray-700">
-              <strong>ERA (Earned Run Average)</strong> is the traditional way to evaluate pitchers. It measures
-              how many earned runs a pitcher allows per 9 innings. A 3.00 ERA means 3 earned runs per 9 innings.
-              Lower is better.
-            </p>
-          </section>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="prose prose-lg max-w-none">
 
-          <section className="mb-12">
-            <h2 className="text-3xl font-display font-bold mb-6">The ERA Problem</h2>
-            <p className="text-gray-700">
-              ERA has a fatal flaw: it's highly dependent on factors outside the pitcher's control - namely,
-              <strong> team defense</strong>, <strong>ballpark</strong>, and <strong>luck on balls in play</strong>.
-              A pitcher with great defense behind them will have a better ERA than their true talent level. A pitcher
-              in a hitter-friendly park will suffer.
+          {/* Core Question */}
+          <div className="bg-[#0a1628] border-4 border-[#ffd23f] p-8 my-8">
+            <p className="text-[#f5f1e8] text-2xl font-serif leading-relaxed mb-0">
+              <strong className="text-[#ffd23f]">"How good is this pitcher's true talent, independent of defense, ballpark, and luck?"</strong>
             </p>
-          </section>
+            <p className="text-[#cbd5e0] mt-4 mb-0 font-serif">
+              For decades, ERA (Earned Run Average) was the gold standard for evaluating pitchers. But ERA conflates skill with circumstances—
+              a great pitcher with bad defense will have a worse ERA than their true talent. Modern metrics finally separate what pitchers control
+              from what they don't.
+            </p>
+          </div>
 
+          {/* The ERA Problem */}
           <section className="mb-12">
-            <h2 className="text-3xl font-display font-bold mb-6">FIP: Fielding Independent Pitching</h2>
-            <p className="text-gray-700 mb-4">
-              <strong>FIP</strong> solves this by focusing only on what pitchers can control: strikeouts, walks,
-              hit batters, and home runs. It ignores balls in play because defense plays a huge role there.
-            </p>
-            <p className="text-gray-700">
-              FIP is scaled to look like ERA for easier comparison. A 3.50 FIP is equivalent to a 3.50 ERA in
-              predictive value. But here's the key: <strong>FIP predicts future ERA better than current ERA does</strong>.
+            <h2 className="text-3xl font-display font-bold mb-6 text-gray-900">The ERA Problem: Defense, Luck, and Context</h2>
+
+            <p className="text-gray-700 leading-relaxed mb-6 font-serif">
+              <strong>ERA (Earned Run Average)</strong> measures runs allowed per 9 innings. It's intuitive—lower ERA means fewer runs.
+              But ERA depends on factors completely outside the pitcher's control:
             </p>
 
-            {/* FIP Scale */}
-            <div className="bg-[#0a1628] border-4 border-[#ff6b35] p-8 my-8">
-              <div className="inline-block px-3 py-1 bg-[#ff6b35] mb-4">
-                <span className="font-mono text-xs text-white font-bold tracking-widest">FIP SCALE</span>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+              <div className="bg-[#fff5f0] border-2 border-[#ff6b35] p-6">
+                <div className="font-display font-black text-2xl text-[#ff6b35] mb-2">DEFENSE</div>
+                <div className="text-sm text-gray-700 font-serif">
+                  Great defense saves ERAs. Weak defense inflates them. Same pitcher, different results.
+                </div>
               </div>
-              <p className="text-[#f5f1e8] mb-4 font-serif text-lg">
-                FIP is scaled to ERA, so the same benchmarks apply:
+              <div className="bg-[#fff5f0] border-2 border-[#ff6b35] p-6">
+                <div className="font-display font-black text-2xl text-[#ff6b35] mb-2">BALLPARK</div>
+                <div className="text-sm text-gray-700 font-serif">
+                  Coors Field (hitter-friendly) vs Oracle Park (pitcher-friendly) creates 0.50+ ERA swings.
+                </div>
+              </div>
+              <div className="bg-[#fff5f0] border-2 border-[#ff6b35] p-6">
+                <div className="font-display font-black text-2xl text-[#ff6b35] mb-2">BABIP LUCK</div>
+                <div className="text-sm text-gray-700 font-serif">
+                  Batting Average on Balls In Play varies wildly year-to-year. Lucky seasons = low ERA.
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-[#fef5e7] border-l-4 border-[#ff6b35] p-6 my-6">
+              <h4 className="font-display font-bold text-lg mb-3 text-[#ff6b35]">The Regression Trap</h4>
+              <p className="text-gray-700 font-serif mb-3">
+                A pitcher with a 2.80 ERA but poor strikeout rates, high walk rates, and elite team defense is likely getting lucky.
+                Their "true talent" might be closer to 4.00 ERA. Next season, when defense regresses and luck normalizes, their ERA will spike—
+                and teams who signed them to a big contract based on ERA will regret it.
               </p>
-              <ul className="text-[#cbd5e0] space-y-2 mb-0 font-serif">
-                <li>• <strong>Below 3.00</strong>: Excellent</li>
-                <li>• <strong>3.00-3.75</strong>: Above average</li>
-                <li>• <strong>3.75-4.25</strong>: Average</li>
-                <li>• <strong>4.25-5.00</strong>: Below average</li>
-                <li>• <strong>Above 5.00</strong>: Poor</li>
-              </ul>
+              <p className="text-gray-700 font-serif mb-0">
+                This is why scouts and front offices now prioritize <strong>"fielding-independent" metrics</strong> that measure
+                what pitchers actually control.
+              </p>
+            </div>
+          </section>
+
+          {/* FIP: The Revolution */}
+          <section className="mb-12">
+            <h2 className="text-3xl font-display font-bold mb-6 text-gray-900">FIP: Fielding Independent Pitching</h2>
+
+            <p className="text-gray-700 leading-relaxed mb-6 font-serif">
+              <strong>FIP (Fielding Independent Pitching)</strong> revolutionized pitcher evaluation by focusing exclusively on outcomes
+              the pitcher controls: <strong>strikeouts</strong>, <strong>walks</strong>, <strong>hit batters</strong>, and <strong>home runs</strong>.
+              Everything else—singles, doubles, triples—involves defense and batted ball luck, so FIP ignores them.
+            </p>
+
+            <div className="bg-[#0a1628] border-4 border-[#ffd23f] p-8 my-8">
+              <div className="inline-block px-3 py-1 bg-[#ffd23f] mb-4">
+                <span className="font-mono text-xs text-[#0a1628] font-bold tracking-widest">THE BREAKTHROUGH</span>
+              </div>
+              <p className="text-[#f5f1e8] text-xl font-serif leading-relaxed mb-0">
+                <strong className="text-[#ffd23f]">FIP predicts future ERA better than current ERA does.</strong> A pitcher with
+                3.80 ERA but 3.20 FIP is likely to improve next year. A pitcher with 3.00 ERA but 4.50 FIP is due for regression.
+                FIP reveals true talent hidden by temporary circumstances.
+              </p>
             </div>
 
             {/* FIP Calculation */}
@@ -86,216 +122,420 @@ const Pitching: React.FC = () => {
                 <span className="font-mono text-xs text-[#0a1628] font-bold tracking-widest">THE CALCULATION</span>
               </div>
 
-              <h3 className="text-2xl font-display font-black mb-4 text-[#0a1628]">How to Calculate FIP</h3>
+              <h3 className="text-2xl font-display font-black mb-4 text-[#0a1628]">How FIP Works</h3>
 
-              <div className="space-y-6">
-                <div className="bg-[#fef5e7] p-6 border-l-4 border-[#ff6b35]">
-                  <h4 className="font-mono font-bold text-sm text-[#ff6b35] mb-3 tracking-widest">FORMULA</h4>
-                  <p className="font-mono text-base mb-4 text-gray-800 break-words">
-                    FIP = ((13×HR + 3×BB + 3×HBP - 2×K) / IP) + FIP Constant
-                  </p>
-                </div>
+              <div className="bg-[#fef5e7] p-6 border-l-4 border-[#ff6b35] mb-6">
+                <h4 className="font-mono font-bold text-sm text-[#ff6b35] mb-3 tracking-widest">FORMULA</h4>
+                <p className="font-mono text-base md:text-lg text-gray-800 break-words">
+                  FIP = ((13×HR + 3×BB + 3×HBP - 2×K) / IP) + FIP Constant
+                </p>
+                <p className="text-sm text-gray-600 font-serif mt-3">
+                  FIP Constant (typically ~3.10-3.20) scales FIP to match ERA's league average
+                </p>
+              </div>
 
-                <div>
-                  <h4 className="font-display font-bold text-lg mb-3 text-[#0a1628]">What Each Component Means:</h4>
-                  <ul className="space-y-3 text-gray-700 font-serif">
-                    <li><strong>HR:</strong> Home Runs allowed - heavily weighted (×13) as they're guaranteed runs</li>
-                    <li><strong>BB:</strong> Walks allowed - weighted ×3 (bad for pitcher)</li>
-                    <li><strong>HBP:</strong> Hit By Pitch - weighted ×3 (same as walks)</li>
-                    <li><strong>K:</strong> Strikeouts - weighted ×2 and subtracted (good for pitcher)</li>
-                    <li><strong>IP:</strong> Innings Pitched - normalizes the rate</li>
-                    <li><strong>FIP Constant:</strong> Typically ~3.10-3.20, scales FIP to match ERA average</li>
-                  </ul>
-                </div>
-
-                <div className="bg-[#fef5e7] p-6 border-l-4 border-[#ff6b35]">
-                  <h4 className="font-mono font-bold text-sm text-[#ff6b35] mb-3 tracking-widest">WHY THESE SPECIFIC WEIGHTS?</h4>
-                  <p className="text-gray-700 font-serif mb-3">
-                    The weights in FIP (13, 3, 3, -2) aren't arbitrary—they're based on decades of run expectancy research.
-                    Statisticians analyzed millions of plate appearances to determine how much each outcome affects run scoring:
-                  </p>
-                  <ul className="space-y-2 text-gray-700 font-serif text-sm">
-                    <li>
-                      <strong>×13 for HR:</strong> Home runs guarantee at least one run and often more with runners on. They're catastrophic
-                      for pitchers, so they get the heaviest penalty.
-                    </li>
-                    <li>
-                      <strong>×3 for BB/HBP:</strong> Walks and hit batters put runners on base for free, significantly increasing run probability.
-                      They're roughly 3x as damaging as a strikeout is helpful.
-                    </li>
-                    <li>
-                      <strong>-2 for K:</strong> Strikeouts are guaranteed outs with zero chance of advancing runners or errors.
-                      They're valuable but not as impactful as the negative events, hence the smaller magnitude.
-                    </li>
-                  </ul>
-                  <p className="text-gray-700 font-serif mt-3">
-                    These weights reflect <em>true run value</em>, not arbitrary scoring. That's why FIP predicts future ERA so accurately—it's
-                    measuring what actually matters for preventing runs.
-                  </p>
-                </div>
-
-                <div className="bg-[#f0fff4] p-6 border-l-4 border-[#00d9ff]">
-                  <h4 className="font-mono font-bold text-sm text-[#00d9ff] mb-3 tracking-widest">EXAMPLE CALCULATION</h4>
-                  <p className="font-serif text-gray-800 mb-3">
-                    Pitcher over 200 IP: 25 HR, 60 BB, 5 HBP, 220 K. Using FIP constant = 3.13
-                  </p>
-                  <div className="space-y-2 font-mono text-sm text-gray-900">
-                    <p>Numerator = (13×25) + (3×60) + (3×5) - (2×220)</p>
-                    <p>= 325 + 180 + 15 - 440 = <strong>80</strong></p>
-                    <p>Per 9 innings = 80 / 200 = <strong>0.40</strong></p>
-                    <p className="text-lg mt-2">FIP = 0.40 + 3.13 = <strong className="text-[#00d9ff]">3.53</strong> (Above average!)</p>
+              <div className="space-y-4 mb-6">
+                <h4 className="font-display font-bold text-lg text-[#0a1628]">Component Weights Explained:</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="bg-[#fff5f0] p-4 border-l-4 border-[#ff6b35]">
+                    <div className="font-mono font-bold text-[#ff6b35] mb-1">13 × HR</div>
+                    <div className="text-sm text-gray-700 font-serif">
+                      Home runs are catastrophic—guaranteed runs with zero defensive help. Heaviest penalty.
+                    </div>
+                  </div>
+                  <div className="bg-[#f0fff4] p-4 border-l-4 border-[#00d9ff]">
+                    <div className="font-mono font-bold text-[#00d9ff] mb-1">3 × BB</div>
+                    <div className="text-sm text-gray-700 font-serif">
+                      Walks put runners on for free. Significantly increase run probability.
+                    </div>
+                  </div>
+                  <div className="bg-[#f0fff4] p-4 border-l-4 border-[#00d9ff]">
+                    <div className="font-mono font-bold text-[#00d9ff] mb-1">3 × HBP</div>
+                    <div className="text-sm text-gray-700 font-serif">
+                      Hit-by-pitch same as walk—free baserunner.
+                    </div>
+                  </div>
+                  <div className="bg-[#f0fff4] p-4 border-l-4 border-[#00d9ff]">
+                    <div className="font-mono font-bold text-[#00d9ff] mb-1">-2 × K</div>
+                    <div className="text-sm text-gray-700 font-serif">
+                      Strikeouts are guaranteed outs. Valuable, but less impactful than negative events.
+                    </div>
                   </div>
                 </div>
+              </div>
 
-                <div className="text-sm text-gray-600 font-serif italic">
-                  <strong>Note:</strong> The FIP constant changes yearly to align league-average FIP with league-average ERA. FanGraphs calculates and publishes this constant each season.
+              <div className="bg-[#f0fff4] border-2 border-[#00d9ff] p-6">
+                <h4 className="font-mono font-bold text-sm text-[#00d9ff] mb-3 tracking-widest">EXAMPLE CALCULATION</h4>
+                <p className="font-serif text-gray-800 mb-3">
+                  Pitcher over 200 IP: 25 HR, 60 BB, 5 HBP, 220 K. FIP constant = 3.13
+                </p>
+                <div className="space-y-2 font-mono text-xs md:text-sm text-gray-900 mb-4">
+                  <p>Numerator = (13×25) + (3×60) + (3×5) - (2×220)</p>
+                  <p className="ml-4">= 325 + 180 + 15 - 440</p>
+                  <p className="ml-4">= <strong className="text-[#00d9ff]">80</strong></p>
+                  <p className="mt-2">Per 9 innings = 80 / 200 = <strong>0.40</strong></p>
+                  <p className="text-base md:text-lg mt-3 text-[#ff6b35]">FIP = 0.40 + 3.13 = <strong>3.53</strong> (Above average!)</p>
                 </div>
               </div>
             </div>
+
+            {/* FIP Scale */}
+            <div className="bg-[#0a1628] border-4 border-[#ff6b35] p-8 my-8">
+              <div className="inline-block px-3 py-1 bg-[#ff6b35] mb-4">
+                <span className="font-mono text-xs text-white font-bold tracking-widest">FIP SCALE</span>
+              </div>
+              <p className="text-[#cbd5e0] mb-4 font-serif">
+                FIP is scaled to ERA for easy comparison:
+              </p>
+              <table className="w-full">
+                <tbody className="divide-y divide-[#ff9966]">
+                  <tr>
+                    <td className="py-3 font-mono text-[#f5f1e8] font-bold">Below 3.00</td>
+                    <td className="py-3 text-[#cbd5e0] font-serif">Excellent, Cy Young caliber</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 font-mono text-[#f5f1e8] font-bold">3.00 - 3.75</td>
+                    <td className="py-3 text-[#cbd5e0] font-serif">Above average, quality starter</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 font-mono text-[#f5f1e8] font-bold">3.75 - 4.25</td>
+                    <td className="py-3 text-[#cbd5e0] font-serif">Average</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 font-mono text-[#f5f1e8] font-bold">4.25 - 5.00</td>
+                    <td className="py-3 text-[#cbd5e0] font-serif">Below average</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 font-mono text-[#f5f1e8] font-bold">Above 5.00</td>
+                    <td className="py-3 text-[#cbd5e0] font-serif">Poor, replacement level</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </section>
 
+          {/* Modern Metrics Suite */}
           <section className="mb-12">
-            <h2 className="text-3xl font-display font-bold mb-6">Example: Regression Candidate</h2>
-            <p className="text-gray-700">
-              Imagine a pitcher with a 3.00 ERA but a 4.50 FIP. This pitcher is likely getting lucky - maybe their
-              defense is making great plays, or batters are hitting lots of weak contact that defenders catch. Over
-              time, their ERA will likely rise toward their FIP. They're a <strong>regression candidate</strong>.
+            <h2 className="text-3xl font-display font-bold mb-6 text-gray-900">The Modern Pitching Metrics Suite</h2>
+
+            <p className="text-gray-700 leading-relaxed mb-6 font-serif">
+              Beyond FIP, modern analysis uses several complementary metrics to build a complete picture of pitcher skill:
             </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+              <StatCard
+                title="K-BB%"
+                value="Command"
+                description="Strikeout minus walk rate—pure skill indicator"
+                icon={<Target size={32} strokeWidth={2.5} />}
+                color="blue"
+              />
+              <StatCard
+                title="CSW%"
+                value="Strikes"
+                description="Called strikes + whiffs—pitch effectiveness"
+                icon={<Crosshair size={32} strokeWidth={2.5} />}
+                color="green"
+              />
+              <StatCard
+                title="xFIP"
+                value="Expected"
+                description="FIP with normalized HR rate"
+                icon={<TrendingDown size={32} strokeWidth={2.5} />}
+                color="red"
+              />
+              <StatCard
+                title="Stuff+"
+                value="Quality"
+                description="Pitch quality based on Statcast data"
+                icon={<Zap size={32} strokeWidth={2.5} />}
+                color="blue"
+              />
+              <StatCard
+                title="WHIP"
+                value="Baserunners"
+                description="Walks + Hits per Inning Pitched"
+                icon={<BarChart3 size={32} strokeWidth={2.5} />}
+                color="gray"
+              />
+              <StatCard
+                title="SwStr%"
+                value="Whiffs"
+                description="Swinging strike rate—bat-missing ability"
+                icon={<Activity size={32} strokeWidth={2.5} />}
+                color="red"
+              />
+            </div>
           </section>
 
+          {/* K-BB% */}
           <section className="mb-12">
-            <h2 className="text-3xl font-display font-bold mb-6">K-BB%: Strikeout Minus Walk Rate</h2>
-            <p className="text-gray-700 mb-4">
+            <h2 className="text-3xl font-display font-bold mb-6 text-gray-900">K-BB%: The Skill Indicator</h2>
+
+            <p className="text-gray-700 leading-relaxed mb-4 font-serif">
               <strong>K-BB% (Strikeout Rate minus Walk Rate)</strong> is one of the simplest and most predictive pitching metrics.
-              It measures a pitcher's ability to miss bats while avoiding walks. The formula:
+              It directly measures two fundamental skills: <strong>missing bats</strong> (strikeouts) and <strong>throwing strikes</strong> (avoiding walks).
             </p>
 
-            <div className="bg-white border-2 border-[#cbd5e0] p-6 my-6">
+            <div className="bg-white border-2 border-[#cbd5e0] p-8 my-6">
               <p className="font-mono text-lg text-gray-800 mb-3">
                 K-BB% = (K / PA) - (BB / PA) × 100
               </p>
-              <p className="text-sm text-gray-600 font-serif mb-3">
+              <p className="text-sm text-gray-600 font-serif mb-4">
                 Or simply: K% minus BB%
               </p>
-              <ul className="text-sm text-gray-700 font-serif space-y-1">
-                <li>• <strong>Below 10%:</strong> Poor control or stuff</li>
-                <li>• <strong>10-15%:</strong> Average pitcher</li>
-                <li>• <strong>15-20%:</strong> Above average, quality starter</li>
-                <li>• <strong>20%+:</strong> Elite, Cy Young caliber</li>
-              </ul>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-display font-bold mb-2 text-[#0a1628]">Scale:</h4>
+                  <div className="space-y-2 text-sm text-gray-700 font-serif">
+                    <p>• <strong>Below 10%:</strong> Poor stuff or control</p>
+                    <p>• <strong>10-15%:</strong> Average pitcher</p>
+                    <p>• <strong>15-20%:</strong> Above avg, quality starter</p>
+                    <p>• <strong>20%+:</strong> Elite, Cy Young caliber</p>
+                  </div>
+                </div>
+                <div className="bg-[#f0fff4] border-l-4 border-[#00d9ff] p-4">
+                  <h4 className="font-display font-bold text-sm mb-2 text-[#00d9ff]">EXAMPLE</h4>
+                  <p className="text-sm text-gray-700 font-serif mb-2">
+                    Pitcher: 28% K-rate, 8% BB-rate
+                  </p>
+                  <p className="text-sm text-gray-700 font-serif">
+                    K-BB% = 28% - 8% = <strong className="text-[#00d9ff]">20%</strong> (Elite!)
+                  </p>
+                </div>
+              </div>
             </div>
 
-            <p className="text-gray-700">
-              A pitcher with 28% K rate and 8% BB rate has 20% K-BB%, indicating elite stuff and command. This metric is highly
-              stable year-to-year and correlates strongly with future ERA.
-            </p>
+            <div className="bg-[#fef5e7] border-l-4 border-[#00d9ff] p-6">
+              <h4 className="font-display font-bold text-lg mb-3 text-[#00d9ff]">Why It Matters</h4>
+              <p className="text-gray-700 font-serif mb-0">
+                K-BB% is highly stable year-to-year and correlates strongly with future ERA. A pitcher with excellent K-BB% but
+                poor current ERA is likely getting unlucky—expect improvement. It's pure skill, no luck involved.
+              </p>
+            </div>
           </section>
 
+          {/* CSW% */}
           <section className="mb-12">
-            <h2 className="text-3xl font-display font-bold mb-6">CSW%: Called Strike + Whiff Rate</h2>
-            <p className="text-gray-700 mb-4">
-              <strong>CSW% (Called Strike plus Whiff percentage)</strong> is a newer metric that measures how often a pitcher gets
-              strikes without the ball being put in play. It's the percentage of pitches that are either called strikes or swinging strikes (whiffs).
+            <h2 className="text-3xl font-display font-bold mb-6 text-gray-900">CSW%: Called Strikes + Whiffs</h2>
+
+            <p className="text-gray-700 leading-relaxed mb-4 font-serif">
+              <strong>CSW% (Called Strike plus Whiff percentage)</strong> measures how often a pitcher gets strikes without the ball
+              being put in play. It's the percentage of pitches that are either <strong>called strikes</strong> or <strong>swinging strikes</strong> (whiffs).
             </p>
 
             <div className="bg-[#0a1628] border-4 border-[#ff6b35] p-8 my-8">
               <div className="inline-block px-3 py-1 bg-[#ff6b35] mb-4">
                 <span className="font-mono text-xs text-white font-bold tracking-widest">CSW% SCALE</span>
               </div>
-              <p className="text-[#f5f1e8] mb-4 font-serif text-lg">
-                Higher CSW% means better control and stuff:
-              </p>
-              <ul className="text-[#cbd5e0] space-y-2 mb-0 font-serif">
-                <li>• <strong>Below 25%:</strong> Poor command or weak stuff</li>
-                <li>• <strong>25-28%:</strong> Average</li>
-                <li>• <strong>28-30%:</strong> Above average</li>
-                <li>• <strong>30-32%:</strong> Excellent</li>
-                <li>• <strong>32%+:</strong> Elite (top 10% of pitchers)</li>
-              </ul>
+              <table className="w-full">
+                <tbody className="divide-y divide-[#ff9966]">
+                  <tr>
+                    <td className="py-3 font-mono text-[#f5f1e8] font-bold">Below 25%</td>
+                    <td className="py-3 text-[#cbd5e0] font-serif">Poor command or weak stuff</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 font-mono text-[#f5f1e8] font-bold">25-28%</td>
+                    <td className="py-3 text-[#cbd5e0] font-serif">Average</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 font-mono text-[#f5f1e8] font-bold">28-30%</td>
+                    <td className="py-3 text-[#cbd5e0] font-serif">Above average</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 font-mono text-[#f5f1e8] font-bold">30-32%</td>
+                    <td className="py-3 text-[#cbd5e0] font-serif">Excellent</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 font-mono text-[#f5f1e8] font-bold">32%+</td>
+                    <td className="py-3 text-[#cbd5e0] font-serif">Elite (top 10% of pitchers)</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
 
-            <p className="text-gray-700">
+            <p className="text-gray-700 font-serif">
               CSW% is predictive because it's entirely within the pitcher's control—no defense or batted ball luck involved.
               Pitchers with high CSW% consistently outperform their ERA over time.
             </p>
           </section>
 
+          {/* Stuff+ */}
           <section className="mb-12">
-            <h2 className="text-3xl font-display font-bold mb-6">Stuff+: Rating Pitch Quality</h2>
-            <p className="text-gray-700 mb-4">
-              <strong>Stuff+</strong> is a cutting-edge metric that uses Statcast data (spin rate, velocity, movement) to rate
-              the quality of a pitcher's pitches. It's scaled like OPS+ and wRC+, where <strong>100 is average</strong>.
+            <h2 className="text-3xl font-display font-bold mb-6 text-gray-900">Stuff+: Rating Pitch Quality</h2>
+
+            <p className="text-gray-700 leading-relaxed mb-6 font-serif">
+              <strong>Stuff+</strong> is a cutting-edge metric that uses Statcast data (velocity, spin rate, movement) to rate
+              the quality of a pitcher's pitches. It's scaled like wRC+ and OPS+, where <strong>100 is average</strong>.
             </p>
 
-            <div className="bg-white border-2 border-[#cbd5e0] p-6 my-6">
-              <h4 className="font-display font-bold text-lg mb-3 text-[#0a1628]">Stuff+ Explained:</h4>
-              <ul className="space-y-3 text-gray-700 font-serif">
-                <li>
-                  <strong>What it measures:</strong> Raw "stuff" based on velocity, spin rate, and movement characteristics.
-                  Answers "How nasty are this pitcher's pitches?"
-                </li>
-                <li>
-                  <strong>How it's calculated:</strong> Machine learning model trained on thousands of pitches to predict swing-and-miss
-                  and contact quality based purely on pitch characteristics.
-                </li>
-                <li>
-                  <strong>Scale:</strong> 100 = average. 110 = 10% better stuff than average. 90 = 10% worse than average.
-                </li>
-                <li>
-                  <strong>Elite threshold:</strong> 115+ Stuff+ indicates top-tier pitch quality (Spencer Strider, Gerrit Cole level).
-                </li>
-              </ul>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div className="bg-[#f0fff4] border-2 border-[#00d9ff] p-6">
+                <h4 className="font-display font-bold text-lg mb-3 text-[#00d9ff]">What It Measures</h4>
+                <p className="text-gray-700 font-serif text-sm mb-0">
+                  Raw "stuff" based on velocity, spin rate, and movement. Answers: "How nasty are this pitcher's pitches?"
+                  Uses machine learning trained on thousands of pitches to predict swing-and-miss and contact quality.
+                </p>
+              </div>
+              <div className="bg-[#fff5f0] border-2 border-[#ff6b35] p-6">
+                <h4 className="font-display font-bold text-lg mb-3 text-[#ff6b35]">The Scale</h4>
+                <div className="space-y-2 text-sm text-gray-700 font-serif">
+                  <p>• <strong>100:</strong> League average</p>
+                  <p>• <strong>110:</strong> 10% better than average</p>
+                  <p>• <strong>115+:</strong> Elite (Gerrit Cole level)</p>
+                  <p>• <strong>90:</strong> 10% worse than average</p>
+                </div>
+              </div>
             </div>
 
-            <p className="text-gray-700">
-              Stuff+ is valuable because it separates pitch quality from execution and luck. A pitcher with great Stuff+ but poor results
-              may just need better command or sequencing.
-            </p>
-          </section>
-
-          <section className="mb-12">
-            <h2 className="text-3xl font-display font-bold mb-6">WHIP: Walks + Hits Per Inning</h2>
-            <p className="text-gray-700 mb-4">
-              <strong>WHIP (Walks plus Hits per Inning Pitched)</strong> is a simple but effective measure of how many baserunners
-              a pitcher allows. Lower is better.
-            </p>
-
-            <div className="bg-white border-2 border-[#cbd5e0] p-6 my-6">
-              <p className="font-mono text-lg text-gray-800 mb-2">
-                WHIP = (BB + H) / IP
+            <div className="bg-[#fef5e7] border-l-4 border-[#00d9ff] p-6">
+              <h4 className="font-display font-bold text-lg mb-3 text-[#00d9ff]">Why It's Valuable</h4>
+              <p className="text-gray-700 font-serif mb-0">
+                Stuff+ separates pitch quality from execution and luck. A pitcher with great Stuff+ but poor results may just need
+                better command or sequencing. Conversely, a pitcher with low Stuff+ overperforming likely won't sustain it.
               </p>
-              <ul className="text-sm text-gray-700 font-serif space-y-1 mt-3">
-                <li>• <strong>Below 1.00:</strong> Elite (few pitchers achieve this)</li>
-                <li>• <strong>1.00-1.20:</strong> Excellent</li>
-                <li>• <strong>1.20-1.30:</strong> Above average</li>
-                <li>• <strong>1.30-1.40:</strong> Average</li>
-                <li>• <strong>Above 1.40:</strong> Below average</li>
-              </ul>
             </div>
           </section>
 
+          {/* xFIP & WHIP */}
           <section className="mb-12">
-            <h2 className="text-3xl font-display font-bold mb-6">xFIP: Expected FIP</h2>
-            <p className="text-gray-700 mb-4">
-              <strong>xFIP (Expected Fielding Independent Pitching)</strong> takes FIP one step further by normalizing home run rate.
-              It assumes a league-average home run per fly ball rate (~10-11%), removing home run luck from the equation.
-            </p>
+            <h2 className="text-3xl font-display font-bold mb-6 text-gray-900">xFIP & WHIP: Additional Context</h2>
 
-            <p className="text-gray-700">
-              If a pitcher has FIP of 3.50 but xFIP of 4.00, they're likely getting lucky with fewer home runs than expected based on
-              fly ball rate. Over time, expect regression toward xFIP. This helps identify pitchers due for positive or negative changes.
-            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-white border-2 border-[#cbd5e0] p-6">
+                <h3 className="text-xl font-display font-black mb-3 text-[#0a1628]">xFIP: Expected FIP</h3>
+                <p className="text-gray-700 font-serif mb-3 text-sm">
+                  xFIP takes FIP one step further by normalizing home run rate. Assumes league-average HR per fly ball rate (~10-11%),
+                  removing home run luck.
+                </p>
+                <div className="bg-[#fef5e7] border-l-4 border-[#ff6b35] p-4">
+                  <p className="text-gray-700 font-serif text-sm mb-0">
+                    <strong>Example:</strong> Pitcher with FIP 3.50 but xFIP 4.00 is likely getting lucky with fewer HRs than expected.
+                    Expect regression toward xFIP.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-white border-2 border-[#cbd5e0] p-6">
+                <h3 className="text-xl font-display font-black mb-3 text-[#0a1628]">WHIP: Baserunner Rate</h3>
+                <p className="text-gray-700 font-serif mb-3 text-sm">
+                  WHIP (Walks plus Hits per Inning Pitched) measures how many baserunners a pitcher allows. Simple but effective.
+                </p>
+                <p className="font-mono text-base text-gray-800 mb-3">WHIP = (BB + H) / IP</p>
+                <div className="space-y-1 text-xs text-gray-700 font-serif">
+                  <p>• <strong>Below 1.00:</strong> Elite</p>
+                  <p>• <strong>1.00-1.20:</strong> Excellent</p>
+                  <p>• <strong>1.30-1.40:</strong> Average</p>
+                  <p>• <strong>Above 1.40:</strong> Below average</p>
+                </div>
+              </div>
+            </div>
           </section>
+
+          {/* How Teams Use This */}
+          <section className="mb-12">
+            <h2 className="text-3xl font-display font-bold mb-6 text-gray-900">How MLB Teams Use These Metrics</h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div className="bg-[#f0fff4] border-l-4 border-[#00d9ff] p-6">
+                <h4 className="font-display font-bold mb-2 text-[#00d9ff]">Free Agent Valuation</h4>
+                <p className="text-gray-700 font-serif text-sm mb-0">
+                  Teams identify pitchers with low ERA but poor FIP/K-BB% as regression candidates to avoid in free agency.
+                  Conversely, pitchers with high ERA but excellent peripherals are undervalued buys.
+                </p>
+              </div>
+              <div className="bg-[#f0fff4] border-l-4 border-[#00d9ff] p-6">
+                <h4 className="font-display font-bold mb-2 text-[#00d9ff]">Trade Decisions</h4>
+                <p className="text-gray-700 font-serif text-sm mb-0">
+                  Sell high on pitchers with excellent ERA but poor FIP (likely lucky). Buy low on pitchers with poor ERA
+                  but strong FIP/Stuff+ (unlucky, due for rebound).
+                </p>
+              </div>
+              <div className="bg-[#f0fff4] border-l-4 border-[#00d9ff] p-6">
+                <h4 className="font-display font-bold mb-2 text-[#00d9ff]">Development Focus</h4>
+                <p className="text-gray-700 font-serif text-sm mb-0">
+                  Young pitchers with elite Stuff+ but high walk rates focus on command development. Pitchers with good
+                  control but low Stuff+ work on velocity/spin optimization.
+                </p>
+              </div>
+              <div className="bg-[#f0fff4] border-l-4 border-[#00d9ff] p-6">
+                <h4 className="font-display font-bold mb-2 text-[#00d9ff]">In-Season Management</h4>
+                <p className="text-gray-700 font-serif text-sm mb-0">
+                  Monitor CSW% and SwStr% to detect early signs of fatigue or injury. Declining whiff rates often
+                  precede velocity drops and injuries by weeks.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* Real-World Example */}
+          <section className="mb-12">
+            <h2 className="text-3xl font-display font-bold mb-6 text-gray-900">Real-World Example: Identifying Regression</h2>
+
+            <div className="bg-white border-2 border-[#cbd5e0] p-8">
+              <div className="inline-block px-3 py-1 bg-[#0a1628] mb-6">
+                <span className="font-mono text-xs text-[#ffd23f] font-bold tracking-widest">TALE OF TWO PITCHERS</span>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div className="text-center p-6 bg-[#f0fff4] border-2 border-[#00d9ff]">
+                  <div className="font-display font-black text-3xl text-[#0a1628] mb-4">Pitcher A</div>
+                  <div className="space-y-2 mb-4">
+                    <div className="font-mono text-2xl text-[#2d4a7c]">2.80 ERA</div>
+                    <div className="text-sm text-gray-600 font-serif">Looks elite!</div>
+                  </div>
+                  <div className="border-t-2 border-[#cbd5e0] pt-4 space-y-2">
+                    <div className="text-sm text-gray-700 font-serif">4.50 FIP</div>
+                    <div className="text-sm text-gray-700 font-serif">12% K-BB%</div>
+                    <div className="text-sm text-gray-700 font-serif">95 Stuff+</div>
+                  </div>
+                  <div className="mt-4 inline-block px-3 py-1 bg-[#fff5f0] border-2 border-[#ff6b35]">
+                    <span className="text-sm text-[#ff6b35] font-bold font-mono">REGRESSION RISK</span>
+                  </div>
+                </div>
+
+                <div className="text-center p-6 bg-[#fff5f0] border-2 border-[#ff6b35]">
+                  <div className="font-display font-black text-3xl text-[#0a1628] mb-4">Pitcher B</div>
+                  <div className="space-y-2 mb-4">
+                    <div className="font-mono text-2xl text-[#2d4a7c]">4.20 ERA</div>
+                    <div className="text-sm text-gray-600 font-serif">Looks mediocre</div>
+                  </div>
+                  <div className="border-t-2 border-[#e8e2d5] pt-4 space-y-2">
+                    <div className="text-sm text-gray-700 font-serif">3.20 FIP</div>
+                    <div className="text-sm text-gray-700 font-serif">22% K-BB%</div>
+                    <div className="text-sm text-gray-700 font-serif">118 Stuff+</div>
+                  </div>
+                  <div className="mt-4 inline-block px-3 py-1 bg-[#f0fff4] border-2 border-[#00d9ff]">
+                    <span className="text-sm text-[#00d9ff] font-bold font-mono">IMPROVEMENT DUE</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-[#fef5e7] border-l-4 border-[#00d9ff] p-6">
+                <h4 className="font-display font-bold text-lg mb-3 text-[#00d9ff]">The Verdict</h4>
+                <p className="text-gray-800 font-serif mb-3">
+                  Pitcher A has a great ERA (2.80) but terrible peripherals. They're likely getting lucky with excellent defense
+                  and low BABIP. <strong className="text-[#ff6b35]">Next year, expect 4.00+ ERA</strong>. Bad long-term investment.
+                </p>
+                <p className="text-gray-700 font-serif mb-0">
+                  Pitcher B has a mediocre ERA (4.20) but elite peripherals. They're getting unlucky with weak defense and high BABIP.
+                  <strong className="text-[#00d9ff]"> Next year, expect 3.20-3.50 ERA</strong>. Excellent buy-low candidate.
+                </p>
+              </div>
+            </div>
+          </section>
+
         </motion.div>
 
         <Quiz
           quizId="pitching"
-          question="Which stat better predicts future pitching performance?"
+          question="Pitcher has 3.00 ERA but 4.50 FIP, poor K-BB%, and weak Stuff+. What's likely to happen?"
           options={[
-            'ERA (Earned Run Average)',
-            'FIP (Fielding Independent Pitching)',
-            'Wins',
-            'Strikeouts'
+            'ERA will stay at 3.00 (sustained excellence)',
+            'ERA will regress toward 4.50 (getting lucky)',
+            'FIP will improve to match ERA',
+            'Both metrics are equally predictive'
           ]}
           correctAnswer={1}
         />

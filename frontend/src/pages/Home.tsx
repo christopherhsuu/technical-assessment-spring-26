@@ -164,7 +164,7 @@ const Home: React.FC = () => {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#1a2a47] to-transparent"></div>
       </section>
 
-      {/* Introduction: The Analytics Revolution */}
+      {/* Introduction: What IS Sabermetrics? */}
       <section className="bg-white py-20 px-4 border-b-4 border-[#ffd23f]">
         <div className="max-w-4xl mx-auto">
           <motion.div
@@ -174,10 +174,10 @@ const Home: React.FC = () => {
             className="mb-12"
           >
             <div className="inline-block px-4 py-2 bg-[#ff6b35] border-2 border-[#0a1628] mb-6">
-              <span className="font-mono text-xs text-white font-bold tracking-widest">THE BASEBALL REVOLUTION</span>
+              <span className="font-mono text-xs text-white font-bold tracking-widest">WHAT IS SABERMETRICS?</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-display font-black mb-6 text-[#0a1628]">
-              How Baseball Discovered Better Ways to Measure Performance
+              The Search for Objective Knowledge About Baseball
             </h2>
           </motion.div>
 
@@ -188,10 +188,35 @@ const Home: React.FC = () => {
             transition={{ delay: 0.2 }}
             className="prose prose-lg max-w-none"
           >
+            {/* Definition */}
+            <div className="bg-[#0a1628] border-4 border-[#ffd23f] p-8 my-8">
+              <p className="text-[#f5f1e8] text-2xl font-serif leading-relaxed mb-0">
+                Sabermetrics is <strong className="text-[#ffd23f]">"the search for objective knowledge about baseball"</strong> — a systematic
+                approach to understanding the game through <strong className="text-[#00d9ff]">empirical research</strong> and
+                <strong className="text-[#00d9ff]"> quantifiable evidence</strong> rather than tradition, gut feelings, or "the way it's always been done."
+              </p>
+            </div>
+
             <p className="text-xl text-gray-700 leading-relaxed mb-6 font-serif">
-              For over 130 years, baseball relied on the same simple statistics: <strong>batting average</strong>, <strong>home runs</strong>,
-              <strong> RBIs</strong>, <strong>wins</strong>, and <strong>ERA</strong>. These numbers told a story—but not the whole story.
+              At its core, sabermetrics asks fundamental questions: <em>What actually wins baseball games? Which skills matter most?
+              How do we measure defensive value? Can we predict future performance?</em> Then it answers these questions with data,
+              not hunches.
             </p>
+
+            {/* Where the name comes from */}
+            <div className="bg-[#fef5e7] border-2 border-[#e8e2d5] p-6 my-8">
+              <h3 className="font-display font-bold text-xl mb-3 text-[#0a1628]">Where Does the Name Come From?</h3>
+              <p className="text-gray-700 font-serif mb-3">
+                The term <strong>"sabermetrics"</strong> was coined by Bill James in the early 1980s, derived from <strong>SABR</strong>
+                — the Society for American Baseball Research, founded in 1971. James pioneered the modern analytical movement with his
+                annual <em>Baseball Abstract</em> publications, which challenged conventional wisdom about how to evaluate players.
+              </p>
+              <p className="text-gray-700 font-serif mb-0">
+                Though the term is modern, the practice isn't new. Henry Chadwick published statistical lines in the 1860s,
+                and Branch Rickey hired an internal statistician for the Brooklyn Dodgers in the 1940s. What changed in the 1970s-2000s
+                was the <em>systematic, scientific</em> approach to answering baseball questions with data.
+              </p>
+            </div>
 
             <div className="bg-[#f0fff4] border-l-4 border-[#00d9ff] p-6 my-8">
               <h3 className="font-display font-bold text-2xl mb-4 text-[#0a1628]">The Problem: Players Are Multifaceted</h3>
@@ -212,37 +237,77 @@ const Home: React.FC = () => {
               </p>
             </div>
 
+            {/* The Moneyball Revolution */}
+            <h3 className="text-3xl font-display font-bold mb-6 mt-12 text-[#0a1628]">The Moneyball Revolution: From Fringe to Mainstream</h3>
+
             <p className="text-lg text-gray-700 leading-relaxed mb-6 font-serif">
-              Starting in the 1970s and accelerating in the 2000s, researchers, statisticians, and teams began asking deeper questions:
-              <em> What actually wins baseball games? Which skills matter most? Can we predict future performance?</em> This led to the
-              <strong> sabermetrics revolution</strong>—named after SABR (Society for American Baseball Research).
+              For decades, baseball decision-makers <strong>ignored</strong> sabermetrics. Scouts and executives relied on "the eye test,"
+              traditional statistics, and conventional wisdom. Bill James's groundbreaking research was dismissed as the work of basement-dwelling
+              number-crunchers who "didn't understand the game."
+            </p>
+
+            <p className="text-lg text-gray-700 leading-relaxed mb-6 font-serif">
+              Everything changed in <strong>2002</strong>. The Oakland Athletics, working with one of the smallest payrolls in baseball
+              (about $40 million compared to the Yankees' $125 million), won <strong>103 games</strong> and made the playoffs. Their secret?
+              GM Billy Beane and analyst Paul DePodesta used sabermetric principles to find <em>undervalued</em> players — guys who got on base
+              frequently despite low batting averages, pitchers with excellent strikeout-to-walk ratios despite mediocre win-loss records.
+            </p>
+
+            <div className="bg-[#0a1628] border-4 border-[#ff6b35] p-8 my-8">
+              <h4 className="font-display font-bold text-2xl mb-4 text-[#ffd23f]">The Oakland A's Discovery</h4>
+              <p className="text-[#f5f1e8] text-lg font-serif mb-4">
+                The Athletics realized that <strong className="text-[#00d9ff]">on-base percentage</strong> (OBP) was vastly more important
+                than batting average for scoring runs, yet the market <em>undervalued</em> it. Players with high OBP but low batting averages
+                were cheap. They also discovered that traditional pitcher wins were nearly meaningless — what mattered was
+                <strong className="text-[#00d9ff]"> strikeouts, walks, and home runs allowed</strong>.
+              </p>
+              <p className="text-[#cbd5e0] font-serif mb-0">
+                By exploiting these market inefficiencies, Oakland competed with teams spending 3x more money. When Michael Lewis published
+                <em className="text-[#ffd23f]"> Moneyball</em> in 2003, the cat was out of the bag.
+              </p>
+            </div>
+
+            <p className="text-lg text-gray-700 leading-relaxed mb-6 font-serif">
+              The Boston Red Sox hired Bill James himself in 2003 and won two World Series titles by decade's end. The Chicago Cubs hired
+              Theo Epstein (who learned from the Red Sox model) and ended their 108-year championship drought in 2016.
+              <strong> Today, every single MLB team employs data analysts</strong>, and sabermetrics is no longer fringe — it's fundamental.
+            </p>
+
+            {/* Modern Sabermetrics */}
+            <h3 className="text-3xl font-display font-bold mb-6 mt-12 text-[#0a1628]">Modern Sabermetrics: Beyond the Numbers</h3>
+
+            <p className="text-lg text-gray-700 leading-relaxed mb-6 font-serif">
+              Sabermetrics has evolved far beyond Bill James's original work. In 2015, MLB introduced <strong>Statcast</strong> — a system using
+              high-speed cameras and radar to track every movement on the field. This measures pitch velocity, spin rates, exit velocity off the bat,
+              sprint speed, arm strength, and even reaction time.
             </p>
 
             <div className="bg-[#fef5e7] border-l-4 border-[#ff6b35] p-6 my-8">
-              <h3 className="font-display font-bold text-2xl mb-4 text-[#0a1628]">Why New Stats Matter</h3>
-              <ul className="space-y-3 text-gray-700 font-serif">
+              <h3 className="font-display font-bold text-2xl mb-4 text-[#0a1628]">How Teams Use Sabermetrics Today</h3>
+              <ul className="space-y-4 text-gray-700 font-serif">
                 <li>
-                  <strong>More Nuanced:</strong> Modern stats separate luck from skill, revealing true talent levels that traditional stats miss.
+                  <strong>Player Acquisition:</strong> Identify undervalued free agents, trade targets, and draft prospects based on advanced metrics
+                  rather than traditional scouting alone. Teams look for players whose skills don't show up in traditional stats.
                 </li>
                 <li>
-                  <strong>More Predictive:</strong> Advanced metrics like FIP and wRC+ predict future performance better than ERA and batting average.
-                  Teams use these to identify undervalued players and make smarter decisions.
+                  <strong>Player Development:</strong> Use biomechanical data and Statcast metrics to optimize swings, pitching mechanics, and
+                  defensive positioning. Pitchers can see exactly how their spin rate compares to elite arms and adjust accordingly.
                 </li>
                 <li>
-                  <strong>More Context:</strong> Stats like OPS+ and wRC+ adjust for ballpark and era, allowing fair comparisons across different
-                  environments and time periods.
+                  <strong>In-Game Strategy:</strong> Deploy defensive shifts based on batted ball data. Decide when to bunt, steal bases, or
+                  intentionally walk batters using win probability models. Everything is quantified.
                 </li>
                 <li>
-                  <strong>Deeper Understanding:</strong> Metrics like exit velocity, spin rate, and launch angle reveal <em>why</em> players succeed
-                  or struggle, not just that they did.
+                  <strong>Predicting Performance:</strong> Separate lucky seasons from sustainable talent using metrics like FIP (Fielding Independent
+                  Pitching) and xwOBA (expected weighted on-base average). This helps avoid overpaying aging players or selling low on breakout candidates.
                 </li>
               </ul>
             </div>
 
             <p className="text-lg text-gray-700 leading-relaxed mb-6 font-serif">
-              The 2003 book <em>Moneyball</em> brought these ideas into the mainstream, showing how the Oakland A's used statistics like
-              on-base percentage to compete with much wealthier teams. Today, every MLB team employs analysts, and the best organizations
-              use data to gain competitive advantages in player development, trades, and in-game strategy.
+              The field now includes <strong>biomechanics</strong> (studying player movements), <strong>sports psychology</strong> (mental performance),
+              and <strong>machine learning</strong> (predicting injuries, forecasting breakouts). What started as Bill James counting stats in his
+              basement has become a multi-billion dollar industry reshaping how baseball is played, coached, and understood.
             </p>
 
             <p className="text-lg text-gray-700 leading-relaxed font-serif">
