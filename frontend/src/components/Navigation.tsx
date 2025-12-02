@@ -39,18 +39,21 @@ const Navigation: React.FC = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-2">
+          <div className="hidden md:flex space-x-3">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`px-5 py-2.5 font-sans font-semibold text-sm tracking-wide transition-all rounded-md ${
+                className={`group inline-flex items-center gap-3 px-5 py-3 border-2 text-sm font-display font-bold tracking-wide transition-all shadow-[6px_6px_0px_rgba(15,23,42,0.12)] ${
                   isActive(link.path)
-                    ? 'bg-[#06b6d4] text-white shadow-sm'
-                    : 'bg-transparent text-[#0f172a] hover:bg-[#f1f5f9] hover:text-[#06b6d4]'
+                    ? 'bg-[#3b82f6] border-[#22d3ee] text-white shadow-[8px_8px_0px_rgba(34,211,238,0.25)]'
+                    : 'bg-[#1e293b] border-[#22d3ee] text-white hover:bg-[#3b82f6] hover:shadow-[8px_8px_0px_rgba(34,211,238,0.25)]'
                 }`}
               >
                 {link.label.toUpperCase()}
+                <span className="inline-flex items-center justify-center w-7 h-7 bg-[#22d3ee] text-[#0f172a] font-black text-base leading-none">
+                  →
+                </span>
               </Link>
             ))}
           </div>
@@ -98,14 +101,19 @@ const Navigation: React.FC = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`block px-4 py-3 font-sans font-semibold text-sm tracking-wide transition-all mb-2 rounded-md border-l-4 ${
+                className={`block px-4 py-3 font-display font-bold text-sm tracking-wide transition-all mb-2 rounded-lg border-2 ${
                   isActive(link.path)
-                    ? 'bg-[#06b6d4] text-white border-[#0891b2]'
-                    : 'bg-[#f8fafc] text-[#0f172a] border-gray-300 hover:border-[#06b6d4] hover:bg-white hover:text-[#06b6d4]'
+                    ? 'bg-[#3b82f6] text-white border-[#22d3ee] shadow-[6px_6px_0px_rgba(34,211,238,0.25)]'
+                    : 'bg-[#1e293b] text-white border-[#22d3ee] hover:bg-[#3b82f6] hover:shadow-[6px_6px_0px_rgba(34,211,238,0.25)]'
                 }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                {link.label.toUpperCase()}
+                <div className="flex items-center justify-between">
+                  <span>{link.label.toUpperCase()}</span>
+                  <span className="inline-flex items-center justify-center w-8 h-8 bg-[#22d3ee] text-[#0f172a] font-black text-base leading-none rounded">
+                    →
+                  </span>
+                </div>
               </Link>
             ))}
           </motion.div>
