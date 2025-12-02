@@ -21,6 +21,24 @@ const Navigation: React.FC = () => {
   ];
 
   const isActive = (path: string) => location.pathname === path;
+  const palette = (path: string) => {
+    switch (path) {
+      case '/war':
+        return { border: '#22d3ee', arrow: '#22d3ee' }; // teal/blue
+      case '/offense':
+        return { border: '#fb923c', arrow: '#fb923c' }; // orange
+      case '/pitching':
+        return { border: '#6366f1', arrow: '#a5b4fc' }; // indigo
+      case '/defense':
+        return { border: '#2dd4bf', arrow: '#2dd4bf' }; // aqua
+      case '/statcast':
+        return { border: '#a855f7', arrow: '#a855f7' }; // purple
+      case '/glossary':
+        return { border: '#22d3ee', arrow: '#22d3ee' }; // neutral blue
+      default:
+        return { border: '#22d3ee', arrow: '#22d3ee' }; // home default
+    }
+  };
 
   return (
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-30 shadow-sm">
@@ -40,22 +58,28 @@ const Navigation: React.FC = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-2">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`group inline-flex items-center gap-2 px-4 py-2.5 border text-xs font-display font-semibold tracking-[0.14em] uppercase rounded-full transition-all ${
-                  isActive(link.path)
-                    ? 'bg-[#0f172a] border-[#22d3ee] text-white shadow-[0_10px_25px_-12px_rgba(34,211,238,0.6)]'
-                    : 'bg-white border-[#e2e8f0] text-[#0f172a] hover:border-[#22d3ee] hover:shadow-[0_10px_25px_-12px_rgba(34,211,238,0.6)]'
-                }`}
-              >
-                {link.label.toUpperCase()}
-                <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[#22d3ee] text-[#0f172a] font-black text-base leading-none">
-                  →
-                </span>
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const colors = palette(link.path);
+              return (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`group inline-flex items-center gap-2 px-4 py-2.5 border text-xs font-display font-semibold tracking-[0.14em] uppercase rounded-full transition-all ${
+                    isActive(link.path)
+                      ? `bg-[#0f172a] border-[${colors.border}] text-white shadow-[0_10px_25px_-12px_rgba(34,211,238,0.6)]`
+                      : `bg-white border-[#e2e8f0] text-[#0f172a] hover:border-[${colors.border}] hover:shadow-[0_10px_25px_-12px_rgba(34,211,238,0.6)]`
+                  }`}
+                >
+                  {link.label.toUpperCase()}
+                  <span
+                    className="inline-flex items-center justify-center w-6 h-6 rounded-full text-[#0f172a] font-black text-base leading-none"
+                    style={{ backgroundColor: colors.arrow }}
+                  >
+                    →
+                  </span>
+                </Link>
+              );
+            })}
           </div>
 
           {/* Mobile Menu Button */}
@@ -97,25 +121,31 @@ const Navigation: React.FC = () => {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden pb-4 border-t border-gray-200 mt-2 pt-4"
           >
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`block px-4 py-3 font-display font-semibold text-sm tracking-[0.14em] uppercase transition-all mb-3 rounded-full border ${
-                  isActive(link.path)
-                    ? 'bg-[#0f172a] text-white border-[#22d3ee] shadow-[0_10px_25px_-12px_rgba(34,211,238,0.6)]'
-                    : 'bg-white text-[#0f172a] border-[#e2e8f0] hover:border-[#22d3ee] hover:shadow-[0_10px_25px_-12px_rgba(34,211,238,0.6)]'
-                }`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <div className="flex items-center justify-between">
-                  <span>{link.label.toUpperCase()}</span>
-                  <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#22d3ee] text-[#0f172a] font-black text-base leading-none">
-                    →
-                  </span>
-                </div>
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const colors = palette(link.path);
+              return (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`block px-4 py-3 font-display font-semibold text-sm tracking-[0.14em] uppercase transition-all mb-3 rounded-full border ${
+                    isActive(link.path)
+                      ? `bg-[#0f172a] text-white border-[${colors.border}] shadow-[0_10px_25px_-12px_rgba(34,211,238,0.6)]`
+                      : `bg-white text-[#0f172a] border-[#e2e8f0] hover:border-[${colors.border}] hover:shadow-[0_10px_25px_-12px_rgba(34,211,238,0.6)]`
+                  }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <div className="flex items-center justify-between">
+                    <span>{link.label.toUpperCase()}</span>
+                    <span
+                      className="inline-flex items-center justify-center w-7 h-7 rounded-full text-[#0f172a] font-black text-base leading-none"
+                      style={{ backgroundColor: colors.arrow }}
+                    >
+                      →
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
           </motion.div>
         )}
       </div>
