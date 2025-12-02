@@ -705,6 +705,30 @@ const Offense: React.FC = () => {
           correctAnswer={1}
         />
 
+        <Quiz
+          quizId="offense-2"
+          question="Why is OPS considered mathematically imperfect?"
+          options={[
+            'It only measures home runs',
+            'It adds two percentages with different denominators',
+            'It ignores walks completely',
+            'It\'s too complicated to calculate'
+          ]}
+          correctAnswer={1}
+        />
+
+        <Quiz
+          quizId="offense-3"
+          question="What does a wRC+ of 130 mean?"
+          options={[
+            '30% worse than average',
+            '130 runs created',
+            '30% better than league average',
+            'Average performance'
+          ]}
+          correctAnswer={2}
+        />
+
         <Comments pageRoute="/offense" />
       </article>
     </div>

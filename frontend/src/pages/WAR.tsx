@@ -332,7 +332,7 @@ const WAR: React.FC = () => {
           </section>
         </motion.div>
 
-        {/* Quiz */}
+        {/* Quizzes */}
         <Quiz
           quizId="war"
           question="A player with 5.0 WAR is considered:"
@@ -343,6 +343,30 @@ const WAR: React.FC = () => {
             'MVP candidate'
           ]}
           correctAnswer={2}
+        />
+
+        <Quiz
+          quizId="war-2"
+          question="What does the 'Replacement Level' baseline in WAR represent?"
+          options={[
+            'An average MLB player',
+            'A freely available minor league or bench player',
+            'The worst player in MLB',
+            'A rookie with no experience'
+          ]}
+          correctAnswer={1}
+        />
+
+        <Quiz
+          quizId="war-3"
+          question="Why can DRS and UZR disagree on defensive value?"
+          options={[
+            'They use different data sources and zone definitions',
+            'One is wrong and the other is right',
+            'They measure completely different things',
+            'DRS only works for infielders'
+          ]}
+          correctAnswer={0}
         />
 
         {/* Comments */}

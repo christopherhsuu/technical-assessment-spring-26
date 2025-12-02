@@ -622,6 +622,30 @@ const Defense: React.FC = () => {
           correctAnswer={1}
         />
 
+        <Quiz
+          quizId="defense-2"
+          question="What makes OAA (Outs Above Average) revolutionary compared to DRS/UZR?"
+          options={[
+            'It measures more plays',
+            'It uses objective Statcast data instead of human classification',
+            'It only works for outfielders',
+            'It\'s easier to calculate'
+          ]}
+          correctAnswer={1}
+        />
+
+        <Quiz
+          quizId="defense-3"
+          question="A defender with +15 DRS is considered:"
+          options={[
+            'Below average',
+            'Average',
+            'Above average',
+            'Gold Glove caliber, elite'
+          ]}
+          correctAnswer={3}
+        />
+
         <Comments pageRoute="/defense" />
       </article>
     </div>

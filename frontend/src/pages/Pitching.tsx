@@ -540,6 +540,30 @@ const Pitching: React.FC = () => {
           correctAnswer={1}
         />
 
+        <Quiz
+          quizId="pitching-2"
+          question="Why does FIP ignore singles, doubles, and triples?"
+          options={[
+            'They don\'t matter for run prevention',
+            'They\'re too hard to track',
+            'They involve defense and batted ball luck outside pitcher control',
+            'FIP only measures home runs'
+          ]}
+          correctAnswer={2}
+        />
+
+        <Quiz
+          quizId="pitching-3"
+          question="A pitcher with 22% K-BB% is considered:"
+          options={[
+            'Below average',
+            'Average',
+            'Above average',
+            'Elite, Cy Young caliber'
+          ]}
+          correctAnswer={3}
+        />
+
         <Comments pageRoute="/pitching" />
       </article>
     </div>
