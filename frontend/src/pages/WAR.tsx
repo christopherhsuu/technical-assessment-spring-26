@@ -253,13 +253,13 @@ const WAR: React.FC = () => {
               </table>
             </div>
 
-            <div className="bg-[#3b82f6] bg-opacity-10 border-l-4 border-[#3b82f6] p-6 my-8">
-              <h4 className="font-display font-bold text-xl mb-3 text-[#3b82f6]">Important: The Margin of Error</h4>
-              <p className="text-gray-700 font-sans mb-3">
+            <div className="bg-[#e7f1ff] border border-[#cbdcf9] rounded-xl p-6 my-8 shadow-sm">
+              <h4 className="font-display font-bold text-xl mb-3 text-[#0f172a]">Important: The Margin of Error</h4>
+              <p className="text-[#1f2937] font-sans mb-3">
                 A player rated 6.4 WAR vs. 6.1 WAR are essentially <strong>the same</strong>. The difference is noise. WAR works best for
                 identifying tiers (All-Star vs. Solid Starter) rather than precise rankings within a tier.
               </p>
-              <p className="text-gray-700 font-sans">
+              <p className="text-[#1f2937] font-sans">
                 Defense is the biggest source of uncertainty. Single-season defensive metrics can swing +/- 10 runs year-to-year for the same player.
                 Use multi-year samples when possible.
               </p>
