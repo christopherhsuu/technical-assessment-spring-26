@@ -6,23 +6,23 @@ import Comments from '../components/Comments';
 const Statcast: React.FC = () => {
   return (
     <div className="min-h-screen">
-      <section className="relative bg-[#0f172a] text-white py-20 px-4 overflow-hidden border-b-4 border-[#22d3ee]">
+      <section className="relative bg-gradient-to-br from-[#0f172a] via-[#2e1f4d] to-[#7c3aed] text-white py-20 px-4 overflow-hidden border-b-4 border-[#a855f7]">
         {/* Background chart grid */}
         <div className="absolute inset-0 opacity-[0.05]">
           {[...Array(6)].map((_, i) => (
-            <div key={`h-${i}`} className="absolute left-0 right-0 h-px bg-[#22d3ee]" style={{ top: `${i * 20}%` }}></div>
+            <div key={`h-${i}`} className="absolute left-0 right-0 h-px bg-[#a855f7]" style={{ top: `${i * 20}%` }}></div>
           ))}
         </div>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl mx-auto relative z-10">
-          <div className="inline-block mb-6 px-4 py-2 bg-[#22d3ee] border-2 border-[#3b82f6]">
-            <span className="font-mono text-sm tracking-widest text-[#0f172a] font-bold">CUTTING EDGE TECH</span>
+          <div className="inline-block mb-6 px-4 py-2 bg-[#a855f7] border-2 border-[#c084fc]">
+            <span className="font-mono text-sm tracking-widest text-white font-bold">CUTTING EDGE TECH</span>
           </div>
 
           <h1 className="text-5xl md:text-7xl font-display font-black mb-6 leading-tight">
             <span className="text-[#f8fafc]">THE STATCAST</span>
             <br/>
-            <span className="text-[#22d3ee]">REVOLUTION</span>
+            <span className="text-[#c084fc]">REVOLUTION</span>
           </h1>
 
           <p className="text-xl md:text-2xl text-[#e2e8f0] font-sans max-w-2xl">

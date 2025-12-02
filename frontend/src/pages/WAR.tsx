@@ -12,10 +12,10 @@ const WAR: React.FC = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-[#0f172a] text-white py-20 px-4 overflow-hidden border-b-4 border-[#22d3ee]">
+      <section className="relative bg-gradient-to-br from-[#0f172a] via-[#0b2f35] to-[#0f766e] text-white py-20 px-4 overflow-hidden border-b-4 border-[#0ea5e9]">
         <div className="absolute inset-0 opacity-[0.05]">
           {[...Array(6)].map((_, i) => (
-            <div key={`h-${i}`} className="absolute left-0 right-0 h-px bg-[#06b6d4]" style={{ top: `${i * 20}%` }}></div>
+            <div key={`h-${i}`} className="absolute left-0 right-0 h-px bg-[#0ea5e9]" style={{ top: `${i * 20}%` }}></div>
           ))}
         </div>
 
@@ -24,7 +24,7 @@ const WAR: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           className="max-w-4xl mx-auto relative z-10"
         >
-          <div className="inline-block mb-6 px-4 py-2 bg-[#3b82f6] border-2 border-[#22d3ee]">
+          <div className="inline-block mb-6 px-4 py-2 bg-[#0ea5e9] border-2 border-[#22d3ee]">
             <span className="font-mono text-sm tracking-widest text-white font-bold">THE GOLD STANDARD METRIC</span>
           </div>
 

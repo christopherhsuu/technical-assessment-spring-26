@@ -11,26 +11,26 @@ const Offense: React.FC = () => {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative bg-[#1e293b] text-white py-20 px-4 overflow-hidden border-b-4 border-[#06b6d4]">
+      <section className="relative bg-gradient-to-br from-[#1f2937] via-[#2b1a26] to-[#b45309] text-white py-20 px-4 overflow-hidden border-b-4 border-[#f97316]">
         {/* Background chart grid */}
         <div className="absolute inset-0 opacity-[0.05]">
           {[...Array(6)].map((_, i) => (
-            <div key={`h-${i}`} className="absolute left-0 right-0 h-px bg-[#06b6d4]" style={{ top: `${i * 20}%` }}></div>
+            <div key={`h-${i}`} className="absolute left-0 right-0 h-px bg-[#f97316]" style={{ top: `${i * 20}%` }}></div>
           ))}
         </div>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl mx-auto relative z-10">
-          <div className="inline-block mb-6 px-4 py-2 bg-[#06b6d4] border-2 border-[#22d3ee]">
-            <span className="font-mono text-sm tracking-widest text-[#0f172a] font-bold">HITTING ANALYTICS</span>
+          <div className="inline-block mb-6 px-4 py-2 bg-[#f97316] border-2 border-[#fb923c]">
+            <span className="font-mono text-sm tracking-widest text-white font-bold">HITTING ANALYTICS</span>
           </div>
 
           <h1 className="text-5xl md:text-7xl font-display font-black mb-6 leading-tight">
             <span className="text-[#f8fafc]">OFFENSIVE</span>
             <br/>
-            <span className="text-[#22d3ee]">METRICS</span>
+            <span className="text-[#fb923c]">METRICS</span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-[#e2e8f0] font-sans max-w-2xl">
+          <p className="text-xl md:text-2xl text-[#fde68a] font-sans max-w-2xl">
             From batting average to wOBA: The evolution of measuring offensive value
           </p>
         </motion.div>

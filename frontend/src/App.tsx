@@ -15,7 +15,7 @@ import Glossary from './pages/Glossary';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-[#edf1f7]">
+      <div className="min-h-screen bg-[#e0e6ef]">
         <Navigation />
 
         <Routes>

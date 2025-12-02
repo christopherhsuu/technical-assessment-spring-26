@@ -11,7 +11,7 @@ const Pitching: React.FC = () => {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative bg-[#3b82f6] text-white py-20 px-4 overflow-hidden border-b-4 border-[#22d3ee]">
+      <section className="relative bg-gradient-to-br from-[#0f172a] via-[#1f2f5c] to-[#4338ca] text-white py-20 px-4 overflow-hidden border-b-4 border-[#6366f1]">
         {/* Background chart grid */}
         <div className="absolute inset-0 opacity-[0.1]">
           {[...Array(6)].map((_, i) => (
@@ -20,17 +20,17 @@ const Pitching: React.FC = () => {
         </div>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl mx-auto relative z-10">
-          <div className="inline-block mb-6 px-4 py-2 bg-[#0f172a] border-2 border-[#22d3ee]">
-            <span className="font-mono text-sm tracking-widest text-[#22d3ee] font-bold">PITCHING ANALYTICS</span>
+          <div className="inline-block mb-6 px-4 py-2 bg-[#4338ca] border-2 border-[#6366f1]">
+            <span className="font-mono text-sm tracking-widest text-white font-bold">PITCHING ANALYTICS</span>
           </div>
 
           <h1 className="text-5xl md:text-7xl font-display font-black mb-6 leading-tight">
             <span className="text-white">PITCHING</span>
             <br/>
-            <span className="text-[#22d3ee]">METRICS</span>
+            <span className="text-[#a5b4fc]">METRICS</span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-white font-sans max-w-2xl">
+          <p className="text-xl md:text-2xl text-[#e0e7ff] font-sans max-w-2xl">
             Separating skill from luck: How modern metrics predict pitching performance better than ERA
           </p>
         </motion.div>
