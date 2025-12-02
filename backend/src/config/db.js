@@ -8,18 +8,18 @@ import mongoose from 'mongoose';
  * @returns {Promise<void>}
  */
 const connectDB = async () => {
+  const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/sabermetrics-app';
+
   try {
-    // MongoDB connection string should be in .env file
-    // For development, we'll use a default local connection if not set
-    const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/sabermetrics-app';
-
     const conn = await mongoose.connect(mongoURI);
-
     console.log(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
     console.error(`Error connecting to MongoDB: ${error.message}`);
-    // Exit process with failure code if database connection fails
-    process.exit(1);
+    // Avoid crashing dev server; retry after a short delay so nodemon doesn't loop
+    setTimeout(() => {
+      console.log('Retrying MongoDB connection...');
+      connectDB();
+    }, 5000);
   }
 };
 

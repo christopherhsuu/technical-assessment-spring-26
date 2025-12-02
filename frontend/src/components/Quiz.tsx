@@ -182,8 +182,8 @@ const Quiz: React.FC<QuizProps> = ({ quizId, question, options, correctAnswer })
         className="my-8 p-6 md:p-8 bg-white border border-gray-200"
       >
         {/* Header */}
-        <div className="inline-block px-3 py-1 bg-[#06b6d4] mb-6">
-          <span className="font-mono text-xs text-white font-bold tracking-widest">TEST YOUR KNOWLEDGE</span>
+        <div className="inline-block px-3 py-1 bg-[#06b6d4] bg-opacity-90 rounded-full mb-6 shadow-sm">
+          <span className="font-mono text-[11px] text-white font-bold tracking-[0.2em]">TEST YOUR KNOWLEDGE</span>
         </div>
 
         {/* Question */}
@@ -206,14 +206,14 @@ const Quiz: React.FC<QuizProps> = ({ quizId, question, options, correctAnswer })
                   whileHover={{ scale: hasVoted ? 1 : 1.01 }}
                   whileTap={{ scale: 0.99 }}
                   onClick={() => handleOptionClick(index)}
-                  className={`w-full p-4 border text-left transition-all relative overflow-hidden ${
+                  className={`w-full p-4 border text-left transition-all relative overflow-hidden rounded-lg ${
                     isSelected && showResults && isThisCorrect
                       ? 'border-[#06b6d4] bg-cyan-50'
-                      : isSelected && showResults && !isThisCorrect
+                    : isSelected && showResults && !isThisCorrect
                       ? 'border-[#ef4444] bg-red-50'
-                      : isSelected
+                    : isSelected
                       ? 'border-[#06b6d4] bg-cyan-50'
-                      : 'border-gray-200 hover:border-[#06b6d4] hover:shadow-sm'
+                      : 'border-gray-200 hover:border-[#06b6d4] hover:shadow-md bg-white'
                   }`}
                   disabled={loading}
                 >
@@ -270,7 +270,7 @@ const Quiz: React.FC<QuizProps> = ({ quizId, question, options, correctAnswer })
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
                       exit={{ opacity: 0, height: 0 }}
-                      className="mt-2 ml-4 p-4 bg-gray-50 border-l-4 border-[#06b6d4]"
+                      className="mt-2 ml-4 p-4 bg-[#f8fafc] border border-gray-200 rounded-lg"
                     >
                       <div className="flex flex-wrap gap-2">
                         {voteCount.usernames.map((name, i) => (
@@ -292,25 +292,25 @@ const Quiz: React.FC<QuizProps> = ({ quizId, question, options, correctAnswer })
 
         {/* Footer info */}
         {hasVoted && (
-          <div className="mt-6 pt-4 border-t-2 border-[#e8e2d5]">
-            <p className="text-sm font-serif text-gray-700">
-              Total votes: <span className="font-mono font-bold text-[#0a1628]">{totalVotes}</span>
+          <div className="mt-6 pt-4 border-t border-gray-200">
+            <p className="text-sm font-sans text-slate-600">
+              Total votes: <span className="font-mono font-bold text-[#0f172a]">{totalVotes}</span>
               {' • '}
               <span className="text-xs font-mono flex items-center gap-1">
                 {isConnected ? (
                   <>
-                    <Circle className="text-[#00d9ff]" size={8} fill="currentColor" />
-                    <span className="text-[#00d9ff]">Live updates enabled</span>
+                    <Circle className="text-[#10b981]" size={8} fill="currentColor" />
+                    <span className="text-[#10b981]">Live updates enabled</span>
                   </>
                 ) : (
                   <>
-                    <Circle className="text-[#ff6b35]" size={8} fill="currentColor" />
-                    <span className="text-[#ff6b35]">Reconnecting...</span>
+                    <Circle className="text-[#f97316]" size={8} fill="currentColor" />
+                    <span className="text-[#f97316]">Reconnecting...</span>
                   </>
                 )}
               </span>
             </p>
-            <p className="text-xs text-gray-500 mt-2 font-serif italic">
+            <p className="text-xs text-slate-500 mt-2 font-sans">
               Click another option to change your vote
             </p>
           </div>

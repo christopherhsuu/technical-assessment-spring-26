@@ -338,7 +338,7 @@ const Glossary: React.FC = () => {
 
   return (
     <div className="min-h-screen">
-      <section className="relative bg-[#ff6b35] text-white py-20 px-4 overflow-hidden border-b-4 border-[#ffd23f]">
+      <section className="relative bg-[#3b82f6] text-white py-20 px-4 overflow-hidden border-b-4 border-[#22d3ee]">
         <div className="absolute inset-0 opacity-[0.1]">
           {[...Array(6)].map((_, i) => (
             <div key={`h-${i}`} className="absolute left-0 right-0 h-px bg-white" style={{ top: `${i * 20}%` }}></div>
@@ -346,17 +346,17 @@ const Glossary: React.FC = () => {
         </div>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl mx-auto relative z-10">
-          <div className="inline-block mb-6 px-4 py-2 bg-[#0a1628] border-2 border-[#ffd23f]">
-            <span className="font-mono text-sm tracking-widest text-[#ffd23f] font-bold">BASEBALL TERMS INDEX</span>
+          <div className="inline-block mb-6 px-4 py-2 bg-[#0f172a] border-2 border-[#22d3ee]">
+            <span className="font-mono text-sm tracking-widest text-[#22d3ee] font-bold">BASEBALL TERMS INDEX</span>
           </div>
 
           <h1 className="text-5xl md:text-7xl font-display font-black mb-6 leading-tight">
             <span className="text-white">STAT</span>
             <br/>
-            <span className="text-[#ffd23f]">GLOSSARY</span>
+            <span className="text-[#22d3ee]">GLOSSARY</span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-white font-serif max-w-2xl">
+          <p className="text-xl md:text-2xl text-white font-sans max-w-2xl">
             A searchable index of baseball statistics and abbreviations
           </p>
         </motion.div>
@@ -371,15 +371,15 @@ const Glossary: React.FC = () => {
               placeholder="Search for a stat (e.g., 'SF', 'sacrifice fly', 'OPS')..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-6 py-4 text-lg border-4 border-[#0a1628] font-serif focus:outline-none focus:border-[#ff6b35] transition-colors"
+              className="w-full px-6 py-4 text-lg border-4 border-[#0f172a] font-sans focus:outline-none focus:border-[#3b82f6] transition-colors"
             />
-            <div className="absolute right-4 top-1/2 -translate-y-1/2 text-[#cbd5e0]">
+            <div className="absolute right-4 top-1/2 -translate-y-1/2 text-[#e2e8f0]">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </div>
           </div>
-          <p className="text-sm text-gray-600 mt-2 font-serif italic">
+          <p className="text-sm text-gray-600 mt-2 font-sans italic">
             {filteredTerms.length} term{filteredTerms.length !== 1 ? 's' : ''} found
           </p>
         </motion.div>
@@ -392,8 +392,8 @@ const Glossary: React.FC = () => {
             onClick={() => setSelectedCategory(null)}
             className={`px-3 py-1 border-2 transition-all ${
               selectedCategory === null
-                ? 'bg-[#ff6b35] border-[#ff6b35] text-white'
-                : 'bg-[#f5f1e8] border-[#cbd5e0] hover:border-[#ff6b35]'
+                ? 'bg-[#3b82f6] border-[#3b82f6] text-white'
+                : 'bg-[#f8fafc] border-[#e2e8f0] hover:border-[#3b82f6]'
             }`}
           >
             <span className="font-mono text-xs font-bold tracking-widest">ALL</span>
@@ -406,8 +406,8 @@ const Glossary: React.FC = () => {
               onClick={() => setSelectedCategory(category)}
               className={`px-3 py-1 border-2 transition-all ${
                 selectedCategory === category
-                  ? 'bg-[#ff6b35] border-[#ff6b35] text-white'
-                  : 'bg-[#f5f1e8] border-[#cbd5e0] hover:border-[#ff6b35]'
+                  ? 'bg-[#3b82f6] border-[#3b82f6] text-white'
+                  : 'bg-[#f8fafc] border-[#e2e8f0] hover:border-[#3b82f6]'
               }`}
             >
               <span className="font-mono text-xs font-bold tracking-widest">{category.toUpperCase()}</span>
@@ -423,22 +423,22 @@ const Glossary: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: Math.min(index * 0.05, 0.5) }}
-              className="bg-white border-2 border-[#cbd5e0] p-6 hover:border-[#ff6b35] transition-colors"
+              className="bg-white border-2 border-[#e2e8f0] p-6 hover:border-[#3b82f6] transition-colors"
             >
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-3">
                 <div>
-                  <h3 className="font-display font-black text-2xl text-[#0a1628] mb-1">
+                  <h3 className="font-display font-black text-2xl text-[#0f172a] mb-1">
                     {item.term}
                   </h3>
-                  <p className="text-[#ff6b35] font-serif font-semibold">
+                  <p className="text-[#3b82f6] font-sans font-semibold">
                     {item.full}
                   </p>
                 </div>
-                <div className="inline-block px-3 py-1 bg-[#ffd23f] h-fit">
-                  <span className="font-mono text-xs text-[#0a1628] font-bold tracking-widest">{item.category.toUpperCase()}</span>
+                <div className="inline-block px-3 py-1 bg-[#22d3ee] h-fit">
+                  <span className="font-mono text-xs text-[#0f172a] font-bold tracking-widest">{item.category.toUpperCase()}</span>
                 </div>
               </div>
-              <p className="text-gray-700 font-serif leading-relaxed">
+              <p className="text-gray-700 font-sans leading-relaxed">
                 {item.definition}
               </p>
             </motion.div>
@@ -447,8 +447,8 @@ const Glossary: React.FC = () => {
 
         {filteredTerms.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-2xl text-gray-500 font-serif">No terms found matching "{searchTerm}"</p>
-            <p className="text-gray-600 font-serif mt-2">Try searching for abbreviations like "SF", "OBP", or "WAR"</p>
+            <p className="text-2xl text-gray-500 font-sans">No terms found matching "{searchTerm}"</p>
+            <p className="text-gray-600 font-sans mt-2">Try searching for abbreviations like "SF", "OBP", or "WAR"</p>
           </div>
         )}
 

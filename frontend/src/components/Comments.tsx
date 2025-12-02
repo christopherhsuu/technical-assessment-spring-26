@@ -105,10 +105,10 @@ const Comments: React.FC<CommentsProps> = ({ pageRoute }) => {
     <div className="my-12">
       {/* Section Title */}
       <div className="mb-6">
-        <div className="inline-block px-3 py-1 bg-[#ff6b35] border-2 border-[#ffd23f] mb-3">
-          <span className="font-mono text-xs text-white font-bold tracking-widest">DISCUSSION</span>
+        <div className="inline-block px-3 py-1 bg-[#06b6d4] bg-opacity-90 rounded-full mb-3 shadow-sm">
+          <span className="font-mono text-[11px] text-white font-bold tracking-[0.2em]">DISCUSSION</span>
         </div>
-        <h3 className="text-3xl font-display font-black text-[#0a1628]">
+        <h3 className="text-3xl font-display font-black text-[#0f172a]">
           Join the Conversation
         </h3>
       </div>
@@ -117,7 +117,7 @@ const Comments: React.FC<CommentsProps> = ({ pageRoute }) => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white border-2 border-[#cbd5e0] p-6 mb-6"
+        className="bg-white border border-gray-200 rounded-xl shadow-sm p-6 mb-6"
       >
         <form onSubmit={handleSubmit}>
           <textarea
@@ -127,7 +127,7 @@ const Comments: React.FC<CommentsProps> = ({ pageRoute }) => {
               setError(null);
             }}
             placeholder="Share your thoughts or ask a question..."
-            className="w-full px-4 py-3 border-2 border-[#cbd5e0] focus:border-[#ffd23f] focus:outline-none transition-colors resize-none font-serif"
+            className="w-full px-4 py-3 border border-gray-300 focus:border-[#06b6d4] focus:ring-2 focus:ring-[#22d3ee]/30 focus:outline-none transition-colors resize-none font-sans rounded-lg text-slate-800"
             rows={4}
             maxLength={1000}
             disabled={submitting}
@@ -135,14 +135,14 @@ const Comments: React.FC<CommentsProps> = ({ pageRoute }) => {
 
           {/* Character count */}
           <div className="flex items-center justify-between mt-3">
-            <span className="text-sm text-gray-500 font-mono">
+            <span className="text-sm text-slate-500 font-mono">
               {commentText.length}/1000
             </span>
 
             <button
               type="submit"
               disabled={submitting || commentText.trim().length === 0}
-              className="px-6 py-3 bg-[#ff6b35] text-white border-2 border-[#ffd23f] font-display font-bold hover:shadow-[2px_2px_0px_rgba(0,0,0,0.2)] transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-none"
+              className="px-6 py-3 bg-gradient-to-r from-[#0ea5e9] to-[#3b82f6] text-white font-display font-semibold rounded-lg shadow-md hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-md"
             >
               {submitting ? 'POSTING...' : 'POST COMMENT'}
             </button>
@@ -150,7 +150,7 @@ const Comments: React.FC<CommentsProps> = ({ pageRoute }) => {
 
           {/* Error message */}
           {error && (
-            <p className="text-[#ff6b35] text-sm mt-2 font-semibold">{error}</p>
+            <p className="text-[#ef4444] text-sm mt-2 font-semibold font-sans">{error}</p>
           )}
         </form>
       </motion.div>
@@ -159,22 +159,22 @@ const Comments: React.FC<CommentsProps> = ({ pageRoute }) => {
       {loading ? (
         <div className="space-y-4">
           {[1, 2, 3].map((i) => (
-            <div key={i} className="bg-white border-2 border-[#cbd5e0] p-6 animate-pulse">
+            <div key={i} className="bg-white border border-gray-200 rounded-xl p-6 animate-pulse shadow-sm">
               <div className="flex items-center space-x-3 mb-3">
-                <div className="w-10 h-10 bg-[#e8e2d5]"></div>
+                <div className="w-10 h-10 bg-gray-200 rounded-full"></div>
                 <div>
-                  <div className="h-4 bg-[#e8e2d5] w-24 mb-2"></div>
-                  <div className="h-3 bg-[#e8e2d5] w-16"></div>
+                  <div className="h-4 bg-gray-200 w-24 mb-2 rounded"></div>
+                  <div className="h-3 bg-gray-200 w-16 rounded"></div>
                 </div>
               </div>
-              <div className="h-4 bg-[#e8e2d5] w-full mb-2"></div>
-              <div className="h-4 bg-[#e8e2d5] w-3/4"></div>
+              <div className="h-4 bg-gray-200 w-full mb-2 rounded"></div>
+              <div className="h-4 bg-gray-200 w-3/4 rounded"></div>
             </div>
           ))}
         </div>
       ) : comments.length === 0 ? (
-        <div className="bg-[#fef5e7] border-2 border-[#e8e2d5] p-8 text-center">
-          <p className="text-gray-600 font-serif">No comments yet. Be the first to share your thoughts!</p>
+        <div className="bg-[#f8fafc] border border-gray-200 rounded-xl p-8 text-center shadow-sm">
+          <p className="text-slate-600 font-sans">No comments yet. Be the first to share your thoughts!</p>
         </div>
       ) : (
         <div className="space-y-4">
@@ -184,12 +184,12 @@ const Comments: React.FC<CommentsProps> = ({ pageRoute }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05 }}
-              className="bg-white border-2 border-[#cbd5e0] p-6 hover:shadow-[2px_2px_0px_rgba(0,0,0,0.1)] hover:border-[#ffd23f] transition-all"
+              className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-lg transition-all"
             >
               {/* Comment Header */}
               <div className="flex items-start space-x-3 mb-3">
                 {/* Avatar */}
-                <div className="w-10 h-10 bg-[#ff6b35] border-2 border-[#ffd23f] flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 bg-[#06b6d4] border border-[#22d3ee] rounded-full flex items-center justify-center flex-shrink-0 shadow-sm">
                   <span className="text-white font-display font-black text-sm">
                     {comment.username.charAt(0).toUpperCase()}
                   </span>
@@ -197,10 +197,10 @@ const Comments: React.FC<CommentsProps> = ({ pageRoute }) => {
 
                 <div className="flex-1">
                   <div className="flex items-baseline space-x-2">
-                    <span className="font-display font-bold text-[#0a1628]">
+                    <span className="font-display font-bold text-[#0f172a]">
                       {comment.username}
                     </span>
-                    <span className="text-sm text-gray-500 font-mono">
+                    <span className="text-sm text-slate-500 font-mono">
                       {formatTimestamp(comment.timestamp)}
                     </span>
                   </div>
@@ -208,7 +208,7 @@ const Comments: React.FC<CommentsProps> = ({ pageRoute }) => {
               </div>
 
               {/* Comment Text */}
-              <p className="text-gray-700 whitespace-pre-wrap pl-13 font-serif leading-relaxed">
+              <p className="text-slate-700 whitespace-pre-wrap pl-13 font-sans leading-relaxed">
                 {comment.text}
               </p>
             </motion.div>
