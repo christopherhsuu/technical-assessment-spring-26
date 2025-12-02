@@ -21,28 +21,28 @@ const StatCard: React.FC<StatCardProps> = ({
 }) => {
   const colorClasses = {
     green: {
-      bg: 'bg-[#f0fff4]',
-      border: 'border-[#00d9ff]',
-      text: 'text-[#00d9ff]',
-      accent: 'bg-[#00d9ff]'
+      bg: 'bg-white',
+      border: 'border-[#d1fae5]',
+      text: 'text-[#10b981]',
+      accent: 'bg-[#10b981]'
     },
     red: {
-      bg: 'bg-[#fff5f0]',
-      border: 'border-[#ff6b35]',
-      text: 'text-[#ff6b35]',
-      accent: 'bg-[#ff6b35]'
+      bg: 'bg-white',
+      border: 'border-[#fee2e2]',
+      text: 'text-[#ef4444]',
+      accent: 'bg-[#ef4444]'
     },
     blue: {
-      bg: 'bg-[#f0f5ff]',
-      border: 'border-[#2d4a7c]',
-      text: 'text-[#2d4a7c]',
-      accent: 'bg-[#2d4a7c]'
+      bg: 'bg-white',
+      border: 'border-[#dbeafe]',
+      text: 'text-[#3b82f6]',
+      accent: 'bg-[#3b82f6]'
     },
     gray: {
-      bg: 'bg-[#fef5e7]',
-      border: 'border-[#cbd5e0]',
-      text: 'text-[#4a5568]',
-      accent: 'bg-[#cbd5e0]'
+      bg: 'bg-white',
+      border: 'border-[#f1f5f9]',
+      text: 'text-[#64748b]',
+      accent: 'bg-[#64748b]'
     },
   };
 
@@ -51,7 +51,7 @@ const StatCard: React.FC<StatCardProps> = ({
   return (
     <motion.div
       whileHover={{ scale: 1.02, y: -4 }}
-      className={`p-6 border-2 ${colors.bg} ${colors.border} transition-all hover:shadow-[4px_4px_0px_rgba(0,0,0,0.1)]`}
+      className={`p-6 rounded-lg border ${colors.bg} ${colors.border} shadow-sm transition-all hover:shadow-lg`}
     >
       {icon && (
         <div className="mb-3 text-3xl">
@@ -59,7 +59,7 @@ const StatCard: React.FC<StatCardProps> = ({
         </div>
       )}
 
-      <h4 className={`font-mono text-xs font-bold uppercase tracking-widest mb-2 ${colors.text}`}>
+      <h4 className={`font-sans text-xs font-semibold uppercase tracking-wider mb-2 text-slate-600`}>
         {title}
       </h4>
 
@@ -68,7 +68,7 @@ const StatCard: React.FC<StatCardProps> = ({
       </div>
 
       {description && (
-        <p className="text-sm text-gray-600 font-serif">
+        <p className="text-sm text-slate-500 font-sans">
           {description}
         </p>
       )}

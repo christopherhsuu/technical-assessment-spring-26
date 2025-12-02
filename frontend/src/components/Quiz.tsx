@@ -153,12 +153,12 @@ const Quiz: React.FC<QuizProps> = ({ quizId, question, options, correctAnswer })
 
   if (loading) {
     return (
-      <div className="my-8 p-8 bg-white border-2 border-[#cbd5e0]">
+      <div className="my-8 p-8 bg-white border border-gray-200">
         <div className="animate-pulse">
-          <div className="h-6 bg-[#e8e2d5] w-3/4 mb-4"></div>
+          <div className="h-6 bg-gray-200 w-3/4 mb-4"></div>
           <div className="space-y-3">
             {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="h-12 bg-[#e8e2d5]"></div>
+              <div key={i} className="h-12 bg-gray-200"></div>
             ))}
           </div>
         </div>
@@ -168,8 +168,8 @@ const Quiz: React.FC<QuizProps> = ({ quizId, question, options, correctAnswer })
 
   if (error || !quiz) {
     return (
-      <div className="my-8 p-8 bg-[#fff5f0] border-2 border-[#ff6b35]">
-        <p className="text-[#ff6b35] font-semibold">{error || 'Quiz not found'}</p>
+      <div className="my-8 p-8 bg-red-50 border border-red-200">
+        <p className="text-[#ef4444] font-semibold">{error || 'Quiz not found'}</p>
       </div>
     );
   }
@@ -179,15 +179,15 @@ const Quiz: React.FC<QuizProps> = ({ quizId, question, options, correctAnswer })
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="my-8 p-6 md:p-8 bg-white border-2 border-[#cbd5e0]"
+        className="my-8 p-6 md:p-8 bg-white border border-gray-200"
       >
         {/* Header */}
-        <div className="inline-block px-3 py-1 bg-[#ffd23f] mb-6">
-          <span className="font-mono text-xs text-[#0a1628] font-bold tracking-widest">TEST YOUR KNOWLEDGE</span>
+        <div className="inline-block px-3 py-1 bg-[#06b6d4] mb-6">
+          <span className="font-mono text-xs text-white font-bold tracking-widest">TEST YOUR KNOWLEDGE</span>
         </div>
 
         {/* Question */}
-        <h3 className="text-xl md:text-2xl font-display font-black mb-6 text-[#0a1628]">
+        <h3 className="text-xl md:text-2xl font-sans font-black mb-6 text-[#1e293b]">
           {question}
         </h3>
 
@@ -206,14 +206,14 @@ const Quiz: React.FC<QuizProps> = ({ quizId, question, options, correctAnswer })
                   whileHover={{ scale: hasVoted ? 1 : 1.01 }}
                   whileTap={{ scale: 0.99 }}
                   onClick={() => handleOptionClick(index)}
-                  className={`w-full p-4 border-2 text-left transition-all relative overflow-hidden ${
+                  className={`w-full p-4 border text-left transition-all relative overflow-hidden ${
                     isSelected && showResults && isThisCorrect
-                      ? 'border-[#00d9ff] bg-[#f0fff4]'
+                      ? 'border-[#06b6d4] bg-cyan-50'
                       : isSelected && showResults && !isThisCorrect
-                      ? 'border-[#ff6b35] bg-[#fff5f0]'
+                      ? 'border-[#ef4444] bg-red-50'
                       : isSelected
-                      ? 'border-[#ffd23f] bg-[#fffbeb]'
-                      : 'border-[#cbd5e0] hover:border-[#ffd23f] hover:shadow-[2px_2px_0px_rgba(0,0,0,0.1)]'
+                      ? 'border-[#06b6d4] bg-cyan-50'
+                      : 'border-gray-200 hover:border-[#06b6d4] hover:shadow-sm'
                   }`}
                   disabled={loading}
                 >
@@ -224,7 +224,7 @@ const Quiz: React.FC<QuizProps> = ({ quizId, question, options, correctAnswer })
                       animate={{ width: `${percentage}%` }}
                       transition={{ duration: 0.5, ease: 'easeOut' }}
                       className={`absolute inset-0 ${
-                        isThisCorrect ? 'bg-[#e6fffa]' : 'bg-[#fef5e7]'
+                        isThisCorrect ? 'bg-cyan-100' : 'bg-gray-100'
                       }`}
                       style={{ zIndex: 0 }}
                     />
@@ -232,20 +232,20 @@ const Quiz: React.FC<QuizProps> = ({ quizId, question, options, correctAnswer })
 
                   {/* Content */}
                   <div className="relative z-10 flex items-center justify-between">
-                    <span className="font-semibold text-gray-800 font-serif">{option}</span>
+                    <span className="font-semibold text-gray-800 font-sans">{option}</span>
 
                     <div className="flex items-center space-x-3">
                       {/* Show correct/incorrect icon after voting */}
                       {showResults && isThisCorrect && (
-                        <Check className="text-[#00d9ff]" size={28} strokeWidth={3} />
+                        <Check className="text-[#06b6d4]" size={28} strokeWidth={3} />
                       )}
                       {showResults && isSelected && !isThisCorrect && (
-                        <X className="text-[#ff6b35]" size={28} strokeWidth={3} />
+                        <X className="text-[#ef4444]" size={28} strokeWidth={3} />
                       )}
 
                       {/* Show percentage after voting */}
                       {showResults && (
-                        <span className="font-mono font-bold text-lg text-[#0a1628]">{percentage}%</span>
+                        <span className="font-mono font-bold text-lg text-[#1e293b]">{percentage}%</span>
                       )}
                     </div>
                   </div>
@@ -257,7 +257,7 @@ const Quiz: React.FC<QuizProps> = ({ quizId, question, options, correctAnswer })
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     onClick={() => setExpandedOption(expandedOption === index ? null : index)}
-                    className="mt-2 ml-4 text-sm text-[#2d4a7c] hover:text-[#00d9ff] font-mono font-semibold transition-colors"
+                    className="mt-2 ml-4 text-sm text-slate-600 hover:text-[#06b6d4] font-mono font-semibold transition-colors"
                   >
                     {expandedOption === index ? 'Hide' : 'Show'} {voteCount.count} voter{voteCount.count !== 1 ? 's' : ''}
                   </motion.button>
@@ -270,13 +270,13 @@ const Quiz: React.FC<QuizProps> = ({ quizId, question, options, correctAnswer })
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
                       exit={{ opacity: 0, height: 0 }}
-                      className="mt-2 ml-4 p-4 bg-[#fef5e7] border-l-4 border-[#ffd23f]"
+                      className="mt-2 ml-4 p-4 bg-gray-50 border-l-4 border-[#06b6d4]"
                     >
                       <div className="flex flex-wrap gap-2">
                         {voteCount.usernames.map((name, i) => (
                           <span
                             key={i}
-                            className="px-3 py-1 bg-white border-2 border-[#cbd5e0] text-sm font-semibold text-gray-700"
+                            className="px-3 py-1 bg-white border border-gray-200 text-sm font-semibold text-gray-700"
                           >
                             {name}
                           </span>

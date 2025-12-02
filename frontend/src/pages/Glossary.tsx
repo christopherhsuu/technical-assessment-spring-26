@@ -5,6 +5,7 @@ import Comments from '../components/Comments';
 
 const Glossary: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   const terms = [
     {
@@ -321,11 +322,17 @@ const Glossary: React.FC = () => {
     },
   ];
 
-  const filteredTerms = terms.filter(term =>
-    term.term.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    term.full.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    term.definition.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredTerms = terms.filter(term => {
+    // Filter by search term
+    const matchesSearch = term.term.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      term.full.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      term.definition.toLowerCase().includes(searchTerm.toLowerCase());
+
+    // Filter by category (if selected)
+    const matchesCategory = !selectedCategory || term.category === selectedCategory;
+
+    return matchesSearch && matchesCategory;
+  });
 
   const categories = [...new Set(terms.map(t => t.category))].sort();
 
@@ -379,10 +386,32 @@ const Glossary: React.FC = () => {
 
         {/* Category Pills */}
         <div className="mb-8 flex flex-wrap gap-2">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setSelectedCategory(null)}
+            className={`px-3 py-1 border-2 transition-all ${
+              selectedCategory === null
+                ? 'bg-[#ff6b35] border-[#ff6b35] text-white'
+                : 'bg-[#f5f1e8] border-[#cbd5e0] hover:border-[#ff6b35]'
+            }`}
+          >
+            <span className="font-mono text-xs font-bold tracking-widest">ALL</span>
+          </motion.button>
           {categories.map(category => (
-            <div key={category} className="inline-block px-3 py-1 bg-[#f5f1e8] border-2 border-[#cbd5e0]">
-              <span className="font-mono text-xs text-[#0a1628] font-bold tracking-widest">{category.toUpperCase()}</span>
-            </div>
+            <motion.button
+              key={category}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setSelectedCategory(category)}
+              className={`px-3 py-1 border-2 transition-all ${
+                selectedCategory === category
+                  ? 'bg-[#ff6b35] border-[#ff6b35] text-white'
+                  : 'bg-[#f5f1e8] border-[#cbd5e0] hover:border-[#ff6b35]'
+              }`}
+            >
+              <span className="font-mono text-xs font-bold tracking-widest">{category.toUpperCase()}</span>
+            </motion.button>
           ))}
         </div>
 
