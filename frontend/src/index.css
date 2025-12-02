@@ -34,6 +34,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+* {
+  font-family: var(--font-family-sans);
+}
+
 /* Modern fade-in animation */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }

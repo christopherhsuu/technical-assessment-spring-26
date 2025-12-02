@@ -529,23 +529,45 @@ const Home: React.FC = () => {
             </p>
           </div>
 
-          <Link to="/war">
-            <motion.button
-              whileHover={{ scale: 1.05, y: -5 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400 }}
-              className="group relative inline-flex items-center px-12 py-6 bg-[#3b82f6] border-4 border-[#22d3ee] shadow-[8px_8px_0px_rgba(255,210,63,0.3)] hover:shadow-[12px_12px_0px_rgba(255,210,63,0.5)] transition-all"
-            >
-              <span className="font-display font-black text-2xl text-white tracking-tight mr-4">
-                BEGIN WITH WAR
-              </span>
-              <div className="w-10 h-10 bg-[#22d3ee] flex items-center justify-center group-hover:animate-[float_1s_ease-in-out_infinite]">
-                <svg className="w-6 h-6 text-[#0f172a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </div>
-            </motion.button>
-          </Link>
+          <div className="flex flex-col items-center gap-4">
+            <Link to="/war">
+              <motion.button
+                whileHover={{ scale: 1.05, y: -3 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ type: "spring", stiffness: 400 }}
+                className="group relative inline-flex items-center px-10 py-4 bg-[#3b82f6] border-2 border-[#22d3ee] rounded-lg shadow-md hover:shadow-lg transition-all"
+              >
+                <span className="font-display font-bold text-xl text-white tracking-tight mr-4">
+                  BEGIN WITH WAR
+                </span>
+                <div className="w-10 h-10 bg-[#22d3ee] flex items-center justify-center rounded-md group-hover:animate-[float_1s_ease-in-out_infinite]">
+                  <svg className="w-6 h-6 text-[#0f172a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </div>
+              </motion.button>
+            </Link>
+
+            <div className="flex flex-wrap justify-center gap-3">
+              {[
+                { path: '/offense', label: 'Offense' },
+                { path: '/pitching', label: 'Pitching' },
+                { path: '/defense', label: 'Defense' },
+                { path: '/statcast', label: 'Statcast' },
+                { path: '/glossary', label: 'Glossary' },
+              ].map((item) => (
+                <Link key={item.path} to={item.path}>
+                  <motion.button
+                    whileHover={{ y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="px-4 py-2 bg-white/10 border border-[#22d3ee] text-white rounded-md text-sm font-semibold tracking-wide hover:bg-white/20 transition-all"
+                  >
+                    {item.label}
+                  </motion.button>
+                </Link>
+              ))}
+            </div>
+          </div>
         </motion.div>
       </section>
     </div>
