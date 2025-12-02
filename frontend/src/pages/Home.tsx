@@ -156,7 +156,7 @@ const Home: React.FC = () => {
             transition={{ delay: 1, duration: 0.8 }}
             className="text-xl md:text-2xl mb-12 text-[#e2e8f0] max-w-3xl mx-auto font-sans leading-relaxed"
           >
-            New to baseball stats? No problem. Learn how numbers reveal the true story of player performance, with clear explanations and step-by-step examples.
+            Learn advanced baseball analytics the way teams use them. We break down WAR, wOBA, FIP, and Statcast data into clear, practical lessons so you can read the game like a front office analyst.
           </motion.p>
         </motion.div>
 
