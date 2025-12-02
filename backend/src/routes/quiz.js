@@ -7,13 +7,13 @@ import Quiz from '../models/Quiz.js';
 const router = express.Router();
 
 /**
- * GET /api/quizzes/:pageRoute
- * Fetch a specific quiz by its page route, including all vote data
+ * GET /api/quizzes/:quizId
+ * Fetch a specific quiz by its quizId, including all vote data
  */
-router.get('/:pageRoute', async (req, res) => {
+router.get('/:quizId', async (req, res) => {
   try {
-    const pageRoute = '/' + req.params.pageRoute;
-    const quiz = await Quiz.findOne({ pageRoute });
+    const quizId = req.params.quizId;
+    const quiz = await Quiz.findOne({ quizId });
 
     if (!quiz) {
       return res.status(404).json({ message: 'Quiz not found' });
@@ -27,11 +27,11 @@ router.get('/:pageRoute', async (req, res) => {
 });
 
 /**
- * POST /api/quizzes/:pageRoute/vote
+ * POST /api/quizzes/:quizId/vote
  * Submit a new vote for a quiz
  * Body: { option: number, username: string }
  */
-router.post('/:pageRoute/vote', async (req, res) => {
+router.post('/:quizId/vote', async (req, res) => {
   try {
     const { option, username } = req.body;
 
@@ -40,8 +40,8 @@ router.post('/:pageRoute/vote', async (req, res) => {
       return res.status(400).json({ message: 'Option and username are required' });
     }
 
-    const pageRoute = '/' + req.params.pageRoute;
-    const quiz = await Quiz.findOne({ pageRoute });
+    const quizId = req.params.quizId;
+    const quiz = await Quiz.findOne({ quizId });
 
     if (!quiz) {
       return res.status(404).json({ message: 'Quiz not found' });
@@ -69,11 +69,11 @@ router.post('/:pageRoute/vote', async (req, res) => {
 });
 
 /**
- * PUT /api/quizzes/:pageRoute/vote
+ * PUT /api/quizzes/:quizId/vote
  * Change an existing vote
  * Body: { newOption: number, username: string }
  */
-router.put('/:pageRoute/vote', async (req, res) => {
+router.put('/:quizId/vote', async (req, res) => {
   try {
     const { newOption, username } = req.body;
 
@@ -82,8 +82,8 @@ router.put('/:pageRoute/vote', async (req, res) => {
       return res.status(400).json({ message: 'New option and username are required' });
     }
 
-    const pageRoute = '/' + req.params.pageRoute;
-    const quiz = await Quiz.findOne({ pageRoute });
+    const quizId = req.params.quizId;
+    const quiz = await Quiz.findOne({ quizId });
 
     if (!quiz) {
       return res.status(404).json({ message: 'Quiz not found' });
